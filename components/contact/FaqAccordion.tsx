@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FAQS } from "@/data/mockData";
+import { FAQS } from "@/lib/mockData";
 
 export const FaqAccordion: React.FC = () => (
   <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">

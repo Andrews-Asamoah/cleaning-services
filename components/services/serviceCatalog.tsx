@@ -1,4 +1,4 @@
-import { SERVICES_DATA } from "@/data/mockData";
+import { SERVICES_DATA } from "@/lib/mockData";
 import { ServiceCard } from "./serviceCard";
 import { Layers } from "lucide-react";
 

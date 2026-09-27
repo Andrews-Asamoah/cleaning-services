@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { JOB_OPENINGS } from "@/data/mockData";
+import { JOB_OPENINGS } from "@/lib/mockData";
 import { CvUploadField } from "./cvUploadField";
 import { ApplicationSuccess } from "./applicationSuccess";
 

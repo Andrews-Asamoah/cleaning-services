@@ -5,7 +5,7 @@ import { ShieldCheck, ChevronRight, Check, Eye } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { SERVICES_DATA, ServiceDetail } from "../../data/mockData";
+import { SERVICES_DATA, ServiceDetail } from "@/lib/mockData";
 
 interface ServicesHighlightGridProps {
   onOpenQuickQuote: () => void;

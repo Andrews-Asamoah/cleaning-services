@@ -3,7 +3,7 @@ import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
-import { ServiceDetail } from "../../data/mockData";
+import { ServiceDetail } from "@/lib/mockData";
 
 interface ServiceDetailModalProps {
   selectedService: ServiceDetail | null;

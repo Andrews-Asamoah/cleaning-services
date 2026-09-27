@@ -1,7 +1,7 @@
 /**
  * site-config.ts
  * ─────────────────────────────────────────────────────────────────────────────
- * Single source of truth for all business details.
+ * Single source of truth for all business details (UK Localized Edition).
  * Search for "// PLACEHOLDER" to find every invented value that needs replacing
  * before going live. NO real contact details appear anywhere else in the app —
  * all components import from here.
@@ -9,6 +9,7 @@
 
 export interface ServiceArea {
   name: string
+  borough?: string
 }
 
 export interface SocialLink {
@@ -35,7 +36,7 @@ export interface JobListing {
 
 export interface PricingTier {
   name: string
-  price: string          // e.g. "From $120" — PLACEHOLDER
+  price: string          // e.g. "From £120" — PLACEHOLDER
   period: string         // e.g. "per visit"
   description: string
   features: string[]
@@ -49,196 +50,181 @@ export interface HoursEntry {
 
 const siteConfig = {
   /** ── Identity ─────────────────────────────────────────────────────────── */
-  name: "SparkClean Group",
-  tagline: "Pristine Spaces, Trusted Professionals",
+  name: "AuraClean UK",
+  tagline: "Pristine Spaces, Trusted British Professionals",
   description:
-    "Professional cleaning and staffing services for homes and businesses. " +
-    "Verified cleaners, satisfaction guaranteed, eco-friendly products.",
+    "Elite professional commercial cleaning and staffing services across London and the UK. " +
+    "DBS-checked staff, 100% satisfaction guaranteed, and eco-friendly British formulations.",
 
-  /** ── Contact ──────────────────────────────────────────────────────────── */
-  phone: "+1 (555) 012-3456",                     // PLACEHOLDER
-  phoneHref: "tel:+15550123456",                   // PLACEHOLDER
-  email: "hello@sparkcleangroup.com",              // PLACEHOLDER
-  emailHref: "mailto:hello@sparkcleangroup.com",   // PLACEHOLDER
+  /** ── Contact (UK Localized) ───────────────────────────────────────────── */
+  phone: "+44 (0) 20 7946 0999",                    // PLACEHOLDER
+  phoneHref: "tel:+442079460999",                    // PLACEHOLDER
+  email: "inquiries@auracleanstaffing.co.uk",        // PLACEHOLDER
+  emailHref: "mailto:inquiries@auracleanstaffing.co.uk", // PLACEHOLDER
+  companyRegistrationNo: "SC-94820184",             // PLACEHOLDER - Companies House ref
+  vatNumber: "GB 984 2018 42",                      // PLACEHOLDER
 
   address: {
-    street: "240 Harbour Boulevard, Suite 4",      // PLACEHOLDER
-    city: "Portland",                              // PLACEHOLDER
-    state: "OR",                                   // PLACEHOLDER
-    zip: "97201",                                  // PLACEHOLDER
-    full: "240 Harbour Boulevard, Suite 4, Portland, OR 97201", // PLACEHOLDER
+    building: "The Scalpel, Level 14",               // PLACEHOLDER
+    street: "52 Lime Street",                       // PLACEHOLDER
+    city: "London",                                 // PLACEHOLDER
+    postcode: "EC3M 7AF",                           // PLACEHOLDER
+    country: "United Kingdom",
+    full: "The Scalpel, Level 14, 52 Lime Street, London, EC3M 7AF", // PLACEHOLDER
     mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-122.676483!3d45.52345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMap+Placeholder!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus",
-    // PLACEHOLDER — replace with real Google Maps embed URL
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.298285746761!2d-0.0825!3d51.5127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTWFwIFBsYWNlaG9sZGVy!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk",
+    // PLACEHOLDER — replace with real Google Maps embed URL for London office
   },
 
   /** ── Hours ────────────────────────────────────────────────────────────── */
   hours: [
-    { days: "Monday – Friday", hours: "7:00 am – 7:00 pm" },
-    { days: "Saturday",        hours: "8:00 am – 5:00 pm" },
-    { days: "Sunday",          hours: "Closed" },
+    { days: "Monday – Saturday", hours: "08:00 am – 08:00 pm GMT" },
+    { days: "Sunday",            hours: "Emergency & Contract Dispatch Only" },
   ] satisfies HoursEntry[],
 
   /** ── Social links ─────────────────────────────────────────────────────── */
   socials: [
-    { label: "Facebook",  href: "https://facebook.com/sparkcleangroup",  icon: "facebook"  },
-    { label: "Instagram", href: "https://instagram.com/sparkcleangroup", icon: "instagram" },
-    { label: "LinkedIn",  href: "https://linkedin.com/company/sparkcleangroup", icon: "linkedin" },
+    { label: "Facebook",  href: "https://facebook.com/auracleanuk",  icon: "facebook"  },
+    { label: "Instagram", href: "https://instagram.com/auracleanuk", icon: "instagram" },
+    { label: "LinkedIn",  href: "https://linkedin.com/company/auracleanuk", icon: "linkedin" },
+    { label: "Twitter",   href: "https://twitter.com/auracleanuk",   icon: "twitter"   },
   ] satisfies SocialLink[],
-  // PLACEHOLDER — replace all social hrefs with real profiles
+  // PLACEHOLDER — replace all social hrefs with real UK profiles
 
-  /** ── Service areas ────────────────────────────────────────────────────── */
+  /** ── Service areas (London & UK Regions) ──────────────────────────────── */
   serviceAreas: [
-    { name: "Portland" },
-    { name: "Beaverton" },
-    { name: "Hillsboro" },
-    { name: "Lake Oswego" },
-    { name: "Tigard" },
-    { name: "Tualatin" },
+    { name: "City of London", borough: "Financial District" },
+    { name: "Canary Wharf", borough: "Tower Hamlets" },
+    { name: "Westminster", borough: "Central London" },
+    { name: "Camden & Islington", borough: "North London" },
+    { name: "Kensington & Chelsea", borough: "West London" },
+    { name: "Greenwich", borough: "South East London" },
   ] satisfies ServiceArea[],
-  // PLACEHOLDER — replace with real service area list
+  // PLACEHOLDER — replace with exact operating boroughs
 
   /** ── Trust stats ──────────────────────────────────────────────────────── */
   stats: {
     yearsInBusiness: "12+",          // PLACEHOLDER
-    clientsSatisfied: "3,400+",      // PLACEHOLDER
-    verifiedCleaners: "85",          // PLACEHOLDER
-    satisfactionRate: "98%",         // PLACEHOLDER
+    clientsSatisfied: "4,200+",      // PLACEHOLDER
+    verifiedCleaners: "120+",        // PLACEHOLDER
+    satisfactionRate: "99.2%",       // PLACEHOLDER
   },
 
   /** ── Testimonials ─────────────────────────────────────────────────────── */
   testimonials: [
     {
       quote:
-        "SparkClean has transformed our office. Every surface gleams and the team is " +
-        "always punctual and professional. Highly recommended.",
-      author: "Margot H.",             // PLACEHOLDER
-      role: "Office Manager, Trellis Co.", // PLACEHOLDER
-      avatarInitials: "MH",
+        "AuraClean transformed our corporate headquarters in Canary Wharf. Their attention to detail, " +
+        "punctuality, and eco-conscious British standards are second to none.",
+      author: "Alistair Sterling",            // PLACEHOLDER
+      role: "Operations Director, Apex Finance UK", // PLACEHOLDER
+      avatarInitials: "AS",
     },
     {
       quote:
-        "I've tried three cleaning services. SparkClean is the only one I kept. " +
-        "Reliable, thorough, and they actually remember my preferences.",
-      author: "Daniel W.",             // PLACEHOLDER
-      role: "Homeowner",              // PLACEHOLDER
-      avatarInitials: "DW",
+        "We've partnered with three commercial agencies in London. AuraClean is the only provider " +
+        "that maintains consistent quality and fully vetted W-2/PAYE staff.",
+      author: "Dr. Beatrice Vance",           // PLACEHOLDER
+      role: "Managing Partner, Harley Street Clinic", // PLACEHOLDER
+      avatarInitials: "BV",
     },
     {
       quote:
-        "The deep clean before our move-in was exceptional. Every corner was spotless. " +
-        "We'll be using them regularly going forward.",
-      author: "Priya & Arjun K.",      // PLACEHOLDER
-      role: "Residential Clients",    // PLACEHOLDER
-      avatarInitials: "PK",
+        "The deep clean prior to our Covent Garden flagship launch was immaculate. They worked around our " +
+        "fit-out schedule seamlessly.",
+      author: "Marcus & Siobhan Thorne",      // PLACEHOLDER
+      role: "Retail Directors, Lumina UK",    // PLACEHOLDER
+      avatarInitials: "MT",
     },
   ] satisfies Testimonial[],
 
-  /** ── Pricing tiers (residential/commercial reference) ─────────────────── */
+  /** ── Pricing tiers (Commercial & Residential Reference in GBP) ───────── */
   pricingTiers: [
     {
-      name: "Essential",
-      price: "From $90",             // PLACEHOLDER
+      name: "Essential Workplace",
+      price: "From £115",            // PLACEHOLDER
       period: "per visit",
-      description: "Regular maintenance cleaning for smaller homes.",
+      description: "Regular routine maintenance cleaning for boutique offices and studios.",
       features: [
-        "Up to 2 bedrooms / 1 bathroom",
-        "Kitchen & living areas",
-        "Eco-friendly products included",
-        "Weekly or bi-weekly schedule",
+        "Up to 2,500 sq ft coverage",
+        "Washroom sanitation & kitchen upkeep",
+        "Eco-friendly EU/UK Ecolabel products",
+        "Weekly or bi-weekly cadence",
       ],
       highlighted: false,
     },
     {
-      name: "Standard",
-      price: "From $145",            // PLACEHOLDER
+      name: "Corporate Standard",
+      price: "From £185",            // PLACEHOLDER
       period: "per visit",
-      description: "Our most popular plan for family homes and apartments.",
+      description: "Our flagship comprehensive plan for multi-floor corporate offices.",
       features: [
-        "Up to 4 bedrooms / 2 bathrooms",
-        "All rooms + laundry room",
-        "Eco-friendly products included",
-        "Flexible scheduling",
-        "Verified & background-checked cleaner",
+        "Up to 6,000 sq ft coverage",
+        "Touchpoint electrostatic sanitization",
+        "BICS-certified cleaning specialists",
+        "Dedicated account supervisor",
+        "Enhanced £5M public liability insurance",
       ],
       highlighted: true,
     },
     {
-      name: "Deep Clean",
-      price: "From $260",            // PLACEHOLDER
+      name: "Enterprise Deep Clean",
+      price: "From £340",            // PLACEHOLDER
       period: "per session",
-      description: "Intensive top-to-bottom clean for move-ins, move-outs, or seasonal resets.",
+      description: "Intensive top-to-bottom restoration clean for handovers and seasonal resets.",
       features: [
-        "Any size property",
-        "Inside appliances & cabinets",
-        "Baseboards, vents & hard-to-reach areas",
-        "Eco-friendly products included",
-        "Satisfaction guarantee",
+        "Unlimited square footage scope",
+        "Carpet extraction & floor burnishing",
+        "High-level ventilation & duct dusting",
+        "Full audit trail & compliance sign-off",
       ],
       highlighted: false,
     },
   ] satisfies PricingTier[],
 
-  /** ── Job listings ─────────────────────────────────────────────────────── */
+  /** ── Job listings (UK Roles) ──────────────────────────────────────────── */
   jobListings: [
     {
-      id: "residential-cleaner",
-      title: "Residential Cleaner",
-      type: "Full-time",
-      location: "Portland, OR",
-      description:
-        "Join our residential cleaning team serving homeowners across the Portland metro. " +
-        "You will perform routine and deep cleaning services to our high standards.",
-      requirements: [
-        "Prior cleaning experience preferred (training provided)",
-        "Valid driver's licence and reliable transportation",
-        "Excellent attention to detail",
-        "Professional and courteous manner",
-        "Ability to work independently",
-      ],
-    },
-    {
-      id: "commercial-cleaner",
+      id: "commercial-cleaner-london",
       title: "Commercial Cleaning Technician",
       type: "Full-time",
-      location: "Portland, OR",
+      location: "London, UK (Zone 1-3)",
       description:
-        "Maintain commercial offices, retail spaces, and facilities. " +
-        "Evening and early-morning shifts available.",
+        "Join our elite London commercial division maintaining prestigious offices and medical hubs. " +
+        "Competitive London Living Wage rates guaranteed.",
       requirements: [
-        "2+ years commercial cleaning experience",  // PLACEHOLDER
-        "Familiarity with industrial cleaning equipment",
-        "Ability to lift up to 30 kg",
-        "Background check required",
+        "1+ years commercial cleaning experience", // PLACEHOLDER
+        "Valid right to work in the UK",
+        "Enhanced DBS check (or willingness to undertake)",
+        "Professional demeanor and reliable transit",
       ],
     },
     {
-      id: "team-lead",
-      title: "Cleaning Team Lead",
+      id: "supervisor-lead",
+      title: "Cleaning Operations Team Lead",
       type: "Full-time",
-      location: "Portland, OR",
+      location: "London, UK",
       description:
-        "Lead a small team of cleaners on residential and commercial assignments. " +
-        "Responsible for quality control and client communication on site.",
+        "Supervise custodial teams across key corporate accounts in the City and Canary Wharf. " +
+        "Responsible for quality auditing and client liaison.",
       requirements: [
-        "3+ years cleaning industry experience",    // PLACEHOLDER
-        "Previous supervisory or team-lead role",
-        "Strong communication skills",
-        "Clean driving record",
+        "2+ years supervisory experience in FM or cleaning", // PLACEHOLDER
+        "BICS or equivalent cleaning supervisory certification",
+        "Strong interpersonal and leadership skills",
+        "Full UK driving licence is a bonus",
       ],
     },
     {
       id: "part-time-cleaner",
-      title: "Part-Time Cleaner",
+      title: "Part-Time Evening Specialist",
       type: "Part-time",
-      location: "Beaverton / Hillsboro, OR",
+      location: "Greater London",
       description:
-        "Flexible part-time positions for residential cleaning. " +
-        "Ideal for those seeking 15–25 hours per week.",
+        "Flexible evening shifts (18:00 – 22:00) maintaining modern co-working spaces and retail showrooms.",
       requirements: [
-        "Reliable and punctual",
-        "No experience required — full training provided",
-        "Eligible to work in the US",
+        "Punctual, meticulous, and trustworthy",
+        "Full training provided via Aura Academy",
+        "Eligible to work in the UK",
       ],
     },
   ] satisfies JobListing[],
@@ -246,34 +232,34 @@ const siteConfig = {
   /** ── Culture perks ────────────────────────────────────────────────────── */
   perks: [
     {
-      title: "Competitive pay",
-      body: "Above-market hourly rates with performance bonuses.", // PLACEHOLDER
+      title: "Above London Living Wage",
+      body: "Starting rates from £13.15 to £18.50/hr with monthly performance incentives.", // PLACEHOLDER
     },
     {
-      title: "Flexible scheduling",
-      body: "Choose shifts that fit your life. We work around you.",
+      title: "Predictable UK Rota",
+      body: "Stable shift patterns with guaranteed weekend rest for daytime teams.",
     },
     {
-      title: "Full training provided",
-      body: "No experience needed for most roles — we train you to our standard.",
+      title: "Paid 80-Hour Aura Academy",
+      body: "BICS-certified training in advanced sanitation and machinery operation.",
     },
     {
-      title: "Eco-friendly products",
-      body: "We supply all cleaning products. Our range is non-toxic and planet-kind.",
+      title: "Eco-Friendly Formulations",
+      body: "100% non-toxic, British Ecolabel certified supplies provided free.",
     },
     {
-      title: "Career growth",
-      body: "Over 60% of our team leads started as cleaners.", // PLACEHOLDER
+      title: "Clear Career Ladders",
+      body: "Over 70% of our Field Supervisors started as cleaning specialists.", // PLACEHOLDER
     },
     {
-      title: "Supportive team",
-      body: "A management team that listens and responds quickly.",
+      title: "Pension & Healthcare",
+      body: "NEST workplace pension scheme and private healthcare options available.",
     },
   ],
 
   /** ── Legal & SEO ──────────────────────────────────────────────────────── */
-  url: "https://www.sparkcleangroup.com",  // PLACEHOLDER — replace with production URL
-  ogImage: "/images/og-default.jpg",       // PLACEHOLDER — replace with real OG image
+  url: "https://www.auracleanstaffing.co.uk",  // PLACEHOLDER — production URL
+  ogImage: "/images/og-default.jpg",           // PLACEHOLDER
 } as const
 
 export default siteConfig

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { JOB_OPENINGS } from "@/data/mockData";
+import { JOB_OPENINGS } from "@/lib/mockData";
 import { CareersHero } from "./careersHero";
 import { CareersPerks } from "./careersPerks";
 import { JobOpeningsAccordion } from "./jobOpenings";

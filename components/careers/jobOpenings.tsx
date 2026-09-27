@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Accordion } from "@/components/ui/accordion";
-import { JOB_OPENINGS } from "@/data/mockData";
+import { JOB_OPENINGS } from "@/lib/mockData";
 import { JobOpeningItem } from "./jobOpeningItem";
 
 interface JobOpeningsAccordionProps {

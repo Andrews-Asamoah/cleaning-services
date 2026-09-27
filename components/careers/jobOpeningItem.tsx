@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import type { JobOpening } from "@/data/mockData";
+import type { JobOpening } from "@/lib/mockData";
 
 interface JobOpeningItemProps {
   job: JobOpening;

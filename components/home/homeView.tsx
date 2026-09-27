@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ServiceDetail } from "@/data/mockData";
+import { ServiceDetail } from "@/lib/mockData";
 import { HeroSection } from "./heroSection";
 
 // Imported sub-components

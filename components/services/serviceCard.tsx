@@ -2,7 +2,7 @@ import { Check, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import type { ServiceDetail } from "@/data/mockData";
+import type { ServiceDetail } from "@/lib/mockData";
 import Image from "next/image";
 
 interface ServiceCardProps {

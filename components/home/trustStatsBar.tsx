@@ -1,5 +1,5 @@
 import React from "react";
-import { TRUST_STATS } from "../../data/mockData";
+import { TRUST_STATS } from "@/lib/mockData";
 
 export const TrustStatsBar: React.FC = () => {
   return (

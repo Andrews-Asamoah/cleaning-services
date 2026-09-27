@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Star, Quote, CheckCircle2 } from "lucide-react";
 import { Card } from "../ui/card";
-import { TESTIMONIALS } from "@/data/mockData";
+import { TESTIMONIALS } from "@/lib/mockData";
 
 export const TestimonialsGrid: React.FC = () => {
   return (
