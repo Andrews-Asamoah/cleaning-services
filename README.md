@@ -56,7 +56,9 @@ Brand, contact, hours and service areas live in `lib/site-config.ts`. Anything m
 
 ## Status
 
-Phase 0 (foundations) complete. Next: Phase 1, fix what is broken (working quote dialog, real form submission, one data source, UK content pass).
+- Phase 0 (foundations): done.
+- Phase 1.1 (working quote dialog): done. Every "Get a quote", "Book", "Request Proposal" and "Request Consultation" button opens one shared dialog via `useQuote()`.
+- Next: Phase 1.2, real form submission (Server Actions, Drizzle, Resend, Turnstile). Until then the dialog validates on the server and offers call/email instead of a fake success message.
 
 ## Performance baseline
 

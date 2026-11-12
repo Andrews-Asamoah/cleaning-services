@@ -1,16 +1,20 @@
+"use client";
+
 import { Check, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { ServiceDetail } from "@/data/mockData";
 import Image from "next/image";
+import { useQuote } from "@/components/quote/quote-provider";
+import { toQuoteServiceId } from "@/lib/quote/config";
 
 interface ServiceCardProps {
   service: ServiceDetail;
-  onRequestProposal?: () => void;
 }
 
-export function ServiceCard({ service, onRequestProposal }: ServiceCardProps) {
+export function ServiceCard({ service }: ServiceCardProps) {
+  const { openQuote } = useQuote();
   return (
     <Card className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-card/80 pt-0 shadow-lg backdrop-blur-xl transition-all duration-300 hover:shadow-2xl">
       {/* Image container flushed to the very top with zero padding */}
@@ -76,7 +80,7 @@ export function ServiceCard({ service, onRequestProposal }: ServiceCardProps) {
           <Button
             variant="default"
             size="sm"
-            onClick={onRequestProposal}
+            onClick={() => openQuote({ serviceId: toQuoteServiceId(service.id) })}
             className="group/btn cursor-pointer rounded-xl bg-brand px-5 font-semibold text-brand-foreground shadow-md hover:bg-brand/90"
           >
             <span>Request Proposal</span>

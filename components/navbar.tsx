@@ -16,11 +16,8 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useQuote } from "@/components/quote/quote-provider";
 import { useEffect, useState } from "react";
-
-interface NavbarProps {
-  onOpenQuickQuote?: () => void;
-}
 
 const navLinks = [
   { label: "Home", href: "/", icon: <Sparkles className="h-4 w-4" /> },
@@ -41,18 +38,13 @@ const navLinks = [
   },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickQuote }) => {
+export const Navbar: React.FC = () => {
+  const { openQuote } = useQuote();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  const handleQuoteClick = () => {
-    if (onOpenQuickQuote) {
-      onOpenQuickQuote();
-    } else {
-      console.warn("Quick quote handler not provided to Navbar");
-    }
-  };
+  const handleQuoteClick = () => openQuote();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);

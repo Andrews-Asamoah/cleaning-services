@@ -2,11 +2,7 @@ import { SERVICES_DATA } from "@/data/mockData";
 import { ServiceCard } from "./serviceCard";
 import { Layers } from "lucide-react";
 
-interface ServiceCatalogProps {
-  onOpenQuickQuote?: () => void;
-}
-
-export function ServiceCatalog({ onOpenQuickQuote }: ServiceCatalogProps) {
+export function ServiceCatalog() {
   return (
     <section className="mx-auto max-w-7xl space-y-10 px-4 py-12 sm:px-6 lg:px-8">
       {/* Section Header */}
@@ -27,7 +23,7 @@ export function ServiceCatalog({ onOpenQuickQuote }: ServiceCatalogProps) {
       {/* Grid */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {SERVICES_DATA.map((service) => (
-          <ServiceCard key={service.id} service={service} onRequestProposal={onOpenQuickQuote} />
+          <ServiceCard key={service.id} service={service} />
         ))}
       </div>
     </section>

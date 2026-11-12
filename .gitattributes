@@ -1,0 +1,9 @@
+# Keep line endings as LF in the repo and in working trees on every OS.
+# (Windows checkouts otherwise get CRLF, which breaks shell hooks and format checks.)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.avif binary
+*.webp binary
+*.ico binary

@@ -8,6 +8,7 @@ import { Fraunces, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
+import { QuoteProvider } from "@/components/quote/quote-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import siteConfig from "@/lib/site-config";
@@ -69,24 +70,26 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <a
-            href="#main-content"
-            className={[
-              "sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100",
-              "focus:rounded-md focus:bg-brand focus:px-4 focus:py-2",
-              "focus:text-sm focus:font-medium focus:text-brand-foreground",
-            ].join(" ")}
-          >
-            Skip to main content
-          </a>
+          <QuoteProvider>
+            <a
+              href="#main-content"
+              className={[
+                "sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100",
+                "focus:rounded-md focus:bg-brand focus:px-4 focus:py-2",
+                "focus:text-sm focus:font-medium focus:text-brand-foreground",
+              ].join(" ")}
+            >
+              Skip to main content
+            </a>
 
-          <Navbar />
+            <Navbar />
 
-          <main id="main-content" className="flex-1" tabIndex={-1}>
-            {children}
-          </main>
+            <main id="main-content" className="flex-1" tabIndex={-1}>
+              {children}
+            </main>
 
-          <Footer />
+            <Footer />
+          </QuoteProvider>
         </ThemeProvider>
         <Analytics />
       </body>

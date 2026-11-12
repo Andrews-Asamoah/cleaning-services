@@ -1,21 +1,24 @@
+"use client";
+
 import React from "react";
 import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
 import { ServiceDetail } from "../../data/mockData";
+import { useQuote } from "@/components/quote/quote-provider";
+import { toQuoteServiceId } from "@/lib/quote/config";
 
 interface ServiceDetailModalProps {
   selectedService: ServiceDetail | null;
   onClose: () => void;
-  onOpenQuickQuote: () => void;
 }
 
 export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
   selectedService,
   onClose,
-  onOpenQuickQuote,
 }) => {
+  const { openQuote } = useQuote();
   if (!selectedService) return null;
 
   return (
@@ -94,7 +97,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
             variant="default"
             onClick={() => {
               onClose();
-              onOpenQuickQuote();
+              openQuote({ serviceId: toQuoteServiceId(selectedService.id) });
             }}
             className="group h-9 cursor-pointer bg-brand px-4 text-xs font-semibold text-brand-foreground shadow-sm transition-all hover:bg-brand/90 hover:shadow-md"
           >

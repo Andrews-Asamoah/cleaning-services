@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,17 +7,18 @@ import { ShieldCheck, ChevronRight, Check, Eye } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
+import { useQuote } from "@/components/quote/quote-provider";
+import { toQuoteServiceId } from "@/lib/quote/config";
 import { SERVICES_DATA, ServiceDetail } from "../../data/mockData";
 
 interface ServicesHighlightGridProps {
-  onOpenQuickQuote: () => void;
   onSelectService: (service: ServiceDetail) => void;
 }
 
 export const ServicesHighlightGrid: React.FC<ServicesHighlightGridProps> = ({
-  onOpenQuickQuote,
   onSelectService,
 }) => {
+  const { openQuote } = useQuote();
   return (
     <section className="mx-auto max-w-7xl space-y-10 px-4 py-12 sm:px-6 lg:px-8">
       {/* Section Header */}
@@ -125,7 +128,7 @@ export const ServicesHighlightGrid: React.FC<ServicesHighlightGridProps> = ({
                   <Button
                     size="sm"
                     variant="default"
-                    onClick={onOpenQuickQuote}
+                    onClick={() => openQuote({ serviceId: toQuoteServiceId(service.id) })}
                     className="h-9 cursor-pointer rounded-xl bg-brand px-3.5 text-xs font-semibold text-brand-foreground shadow-sm hover:bg-brand/90"
                   >
                     Book
