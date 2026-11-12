@@ -8,128 +8,141 @@
  */
 
 export interface ServiceArea {
-  name: string
+  name: string;
 }
 
 export interface SocialLink {
-  label: string
-  href: string
-  icon: "facebook" | "instagram" | "linkedin" | "twitter"
+  label: string;
+  href: string;
+  icon: "facebook" | "instagram" | "linkedin" | "twitter";
 }
 
 export interface Testimonial {
-  quote: string
-  author: string
-  role: string
-  avatarInitials: string
+  quote: string;
+  author: string;
+  role: string;
+  avatarInitials: string;
 }
 
 export interface JobListing {
-  id: string
-  title: string
-  type: "Full-time" | "Part-time" | "Contract"
-  location: string
-  description: string
-  requirements: string[]
+  id: string;
+  title: string;
+  type: "Full-time" | "Part-time" | "Contract";
+  location: string;
+  description: string;
+  requirements: string[];
 }
 
 export interface PricingTier {
-  name: string
-  price: string          // e.g. "From $120" — PLACEHOLDER
-  period: string         // e.g. "per visit"
-  description: string
-  features: string[]
-  highlighted: boolean
+  name: string;
+  price: string; // e.g. "From $120" — PLACEHOLDER
+  period: string; // e.g. "per visit"
+  description: string;
+  features: string[];
+  highlighted: boolean;
 }
 
 export interface HoursEntry {
-  days: string
-  hours: string
+  days: string;
+  hours: string;
 }
 
 const siteConfig = {
   /** ── Identity ─────────────────────────────────────────────────────────── */
-  name: "SparkClean Group",
+  name: "AuraClean",
   tagline: "Pristine Spaces, Trusted Professionals",
   description:
     "Professional cleaning and staffing services for homes and businesses. " +
     "Verified cleaners, satisfaction guaranteed, eco-friendly products.",
 
+  /** ── Market decisions (see docs/decisions/0001-brand-market-stack.md) ──── */
+  market: {
+    country: "GB",
+    countryName: "United Kingdom",
+    locale: "en-GB", // <html lang> and Intl formatting
+    openGraphLocale: "en_GB",
+    currency: "GBP",
+    currencySymbol: "£",
+    timeZone: "Europe/London",
+    launchCity: "London",
+    /** Who the homepage speaks to first. B2B stays available but secondary. */
+    primaryAudience: "b2c",
+  },
+
   /** ── Contact ──────────────────────────────────────────────────────────── */
-  phone: "+1 (555) 012-3456",                     // PLACEHOLDER
-  phoneHref: "tel:+15550123456",                   // PLACEHOLDER
-  email: "hello@sparkcleangroup.com",              // PLACEHOLDER
-  emailHref: "mailto:hello@sparkcleangroup.com",   // PLACEHOLDER
+  phone: "020 7946 0000", // PLACEHOLDER (Ofcom drama number)
+  phoneHref: "tel:+442079460000", // PLACEHOLDER
+  email: "hello@auraclean.co.uk", // PLACEHOLDER
+  emailHref: "mailto:hello@auraclean.co.uk", // PLACEHOLDER
 
   address: {
-    street: "240 Harbour Boulevard, Suite 4",      // PLACEHOLDER
-    city: "Portland",                              // PLACEHOLDER
-    state: "OR",                                   // PLACEHOLDER
-    zip: "97201",                                  // PLACEHOLDER
-    full: "240 Harbour Boulevard, Suite 4, Portland, OR 97201", // PLACEHOLDER
-    mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-122.676483!3d45.52345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMap+Placeholder!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus",
-    // PLACEHOLDER — replace with real Google Maps embed URL
+    street: "1 Placeholder Street", // PLACEHOLDER
+    city: "London",
+    postcode: "EC1A 1AA", // PLACEHOLDER
+    country: "United Kingdom",
+    full: "1 Placeholder Street, London EC1A 1AA, United Kingdom", // PLACEHOLDER
+    // PLACEHOLDER — replace with a real Google Maps embed URL for the office
+    mapEmbedUrl: "",
   },
 
   /** ── Hours ────────────────────────────────────────────────────────────── */
   hours: [
-    { days: "Monday – Friday", hours: "7:00 am – 7:00 pm" },
-    { days: "Saturday",        hours: "8:00 am – 5:00 pm" },
-    { days: "Sunday",          hours: "Closed" },
+    { days: "Monday – Friday", hours: "07:00 – 19:00" },
+    { days: "Saturday", hours: "08:00 – 17:00" },
+    { days: "Sunday", hours: "Closed" },
   ] satisfies HoursEntry[],
 
   /** ── Social links ─────────────────────────────────────────────────────── */
   socials: [
-    { label: "Facebook",  href: "https://facebook.com/sparkcleangroup",  icon: "facebook"  },
-    { label: "Instagram", href: "https://instagram.com/sparkcleangroup", icon: "instagram" },
-    { label: "LinkedIn",  href: "https://linkedin.com/company/sparkcleangroup", icon: "linkedin" },
+    { label: "Facebook", href: "https://facebook.com/auraclean", icon: "facebook" },
+    { label: "Instagram", href: "https://instagram.com/auraclean", icon: "instagram" },
+    { label: "LinkedIn", href: "https://linkedin.com/company/auraclean", icon: "linkedin" },
   ] satisfies SocialLink[],
   // PLACEHOLDER — replace all social hrefs with real profiles
 
   /** ── Service areas ────────────────────────────────────────────────────── */
   serviceAreas: [
-    { name: "Portland" },
-    { name: "Beaverton" },
-    { name: "Hillsboro" },
-    { name: "Lake Oswego" },
-    { name: "Tigard" },
-    { name: "Tualatin" },
+    { name: "Camden" },
+    { name: "Islington" },
+    { name: "Hackney" },
+    { name: "Westminster" },
+    { name: "Southwark" },
+    { name: "Lambeth" },
   ] satisfies ServiceArea[],
   // PLACEHOLDER — replace with real service area list
 
   /** ── Trust stats ──────────────────────────────────────────────────────── */
   stats: {
-    yearsInBusiness: "12+",          // PLACEHOLDER
-    clientsSatisfied: "3,400+",      // PLACEHOLDER
-    verifiedCleaners: "85",          // PLACEHOLDER
-    satisfactionRate: "98%",         // PLACEHOLDER
+    yearsInBusiness: "12+", // PLACEHOLDER
+    clientsSatisfied: "3,400+", // PLACEHOLDER
+    verifiedCleaners: "85", // PLACEHOLDER
+    satisfactionRate: "98%", // PLACEHOLDER
   },
 
   /** ── Testimonials ─────────────────────────────────────────────────────── */
   testimonials: [
     {
       quote:
-        "SparkClean has transformed our office. Every surface gleams and the team is " +
+        "AuraClean has transformed our office. Every surface gleams and the team is " +
         "always punctual and professional. Highly recommended.",
-      author: "Margot H.",             // PLACEHOLDER
+      author: "Margot H.", // PLACEHOLDER
       role: "Office Manager, Trellis Co.", // PLACEHOLDER
       avatarInitials: "MH",
     },
     {
       quote:
-        "I've tried three cleaning services. SparkClean is the only one I kept. " +
+        "I've tried three cleaning services. AuraClean is the only one I kept. " +
         "Reliable, thorough, and they actually remember my preferences.",
-      author: "Daniel W.",             // PLACEHOLDER
-      role: "Homeowner",              // PLACEHOLDER
+      author: "Daniel W.", // PLACEHOLDER
+      role: "Homeowner", // PLACEHOLDER
       avatarInitials: "DW",
     },
     {
       quote:
         "The deep clean before our move-in was exceptional. Every corner was spotless. " +
         "We'll be using them regularly going forward.",
-      author: "Priya & Arjun K.",      // PLACEHOLDER
-      role: "Residential Clients",    // PLACEHOLDER
+      author: "Priya & Arjun K.", // PLACEHOLDER
+      role: "Residential Clients", // PLACEHOLDER
       avatarInitials: "PK",
     },
   ] satisfies Testimonial[],
@@ -138,7 +151,7 @@ const siteConfig = {
   pricingTiers: [
     {
       name: "Essential",
-      price: "From $90",             // PLACEHOLDER
+      price: "From $90", // PLACEHOLDER
       period: "per visit",
       description: "Regular maintenance cleaning for smaller homes.",
       features: [
@@ -151,7 +164,7 @@ const siteConfig = {
     },
     {
       name: "Standard",
-      price: "From $145",            // PLACEHOLDER
+      price: "From $145", // PLACEHOLDER
       period: "per visit",
       description: "Our most popular plan for family homes and apartments.",
       features: [
@@ -165,7 +178,7 @@ const siteConfig = {
     },
     {
       name: "Deep Clean",
-      price: "From $260",            // PLACEHOLDER
+      price: "From $260", // PLACEHOLDER
       period: "per session",
       description: "Intensive top-to-bottom clean for move-ins, move-outs, or seasonal resets.",
       features: [
@@ -185,9 +198,9 @@ const siteConfig = {
       id: "residential-cleaner",
       title: "Residential Cleaner",
       type: "Full-time",
-      location: "Portland, OR",
+      location: "London",
       description:
-        "Join our residential cleaning team serving homeowners across the Portland metro. " +
+        "Join our residential cleaning team serving homeowners across London. " +
         "You will perform routine and deep cleaning services to our high standards.",
       requirements: [
         "Prior cleaning experience preferred (training provided)",
@@ -201,12 +214,12 @@ const siteConfig = {
       id: "commercial-cleaner",
       title: "Commercial Cleaning Technician",
       type: "Full-time",
-      location: "Portland, OR",
+      location: "London",
       description:
         "Maintain commercial offices, retail spaces, and facilities. " +
         "Evening and early-morning shifts available.",
       requirements: [
-        "2+ years commercial cleaning experience",  // PLACEHOLDER
+        "2+ years commercial cleaning experience", // PLACEHOLDER
         "Familiarity with industrial cleaning equipment",
         "Ability to lift up to 30 kg",
         "Background check required",
@@ -216,12 +229,12 @@ const siteConfig = {
       id: "team-lead",
       title: "Cleaning Team Lead",
       type: "Full-time",
-      location: "Portland, OR",
+      location: "London",
       description:
         "Lead a small team of cleaners on residential and commercial assignments. " +
         "Responsible for quality control and client communication on site.",
       requirements: [
-        "3+ years cleaning industry experience",    // PLACEHOLDER
+        "3+ years cleaning industry experience", // PLACEHOLDER
         "Previous supervisory or team-lead role",
         "Strong communication skills",
         "Clean driving record",
@@ -231,14 +244,14 @@ const siteConfig = {
       id: "part-time-cleaner",
       title: "Part-Time Cleaner",
       type: "Part-time",
-      location: "Beaverton / Hillsboro, OR",
+      location: "North London",
       description:
         "Flexible part-time positions for residential cleaning. " +
         "Ideal for those seeking 15–25 hours per week.",
       requirements: [
         "Reliable and punctual",
         "No experience required — full training provided",
-        "Eligible to work in the US",
+        "Eligible to work in the UK",
       ],
     },
   ] satisfies JobListing[],
@@ -272,8 +285,8 @@ const siteConfig = {
   ],
 
   /** ── Legal & SEO ──────────────────────────────────────────────────────── */
-  url: "https://www.sparkcleangroup.com",  // PLACEHOLDER — replace with production URL
-  ogImage: "/images/og-default.jpg",       // PLACEHOLDER — replace with real OG image
-} as const
+  url: "https://www.auraclean.com", // PLACEHOLDER — replace with production URL
+  ogImage: "/images/og-default.jpg", // PLACEHOLDER — replace with real OG image
+} as const;
 
-export default siteConfig
+export default siteConfig;

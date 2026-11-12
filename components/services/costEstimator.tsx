@@ -22,7 +22,7 @@ function calculateEstimate(
   sqFt: number,
   restrooms: number,
   carpetCare: boolean,
-  freq: EstimateFrequency
+  freq: EstimateFrequency,
 ) {
   let baseRate = type === "commercial" ? sqFt * 0.08 : sqFt * 0.11;
   baseRate += restrooms * 25;
@@ -38,10 +38,10 @@ function calculateEstimate(
     freq === "daily"
       ? estimatedPerVisit * 22
       : freq === "weekly"
-      ? estimatedPerVisit * 4
-      : freq === "biweekly"
-      ? estimatedPerVisit * 2
-      : estimatedPerVisit;
+        ? estimatedPerVisit * 4
+        : freq === "biweekly"
+          ? estimatedPerVisit * 2
+          : estimatedPerVisit;
 
   return { estimatedPerVisit, estimatedMonthly };
 }
@@ -58,7 +58,7 @@ export function CostEstimator() {
     sqFt,
     restrooms,
     carpetCare,
-    freq
+    freq,
   );
 
   const scrollToInquiryForm = () => {
@@ -66,36 +66,37 @@ export function CostEstimator() {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Dynamic background card: pristine light card on light mode, frosted slate on dark mode */}
-      <div className="bg-card/85 dark:bg-slate-900/75 backdrop-blur-2xl text-card-foreground dark:text-white rounded-3xl p-6 sm:p-10 border border-border/80 dark:border-white/15 shadow-2xl relative overflow-hidden">
+      <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/85 p-6 text-card-foreground shadow-2xl backdrop-blur-2xl sm:p-10 dark:border-white/15 dark:bg-slate-900/75 dark:text-white">
         {/* Glassmorphism ambient glow accents */}
-        <div className="absolute right-0 top-0 w-96 h-96 bg-brand/10 dark:bg-brand/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute left-0 bottom-0 w-80 h-80 bg-brand/5 dark:bg-brand/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl dark:bg-brand/15" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-80 w-80 rounded-full bg-brand/5 blur-3xl dark:bg-brand/10" />
 
-        <div className="max-w-3xl space-y-3 mb-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-muted text-brand border border-brand/30 text-xs font-bold uppercase tracking-wider">
-            <Calculator className="w-3.5 h-3.5" />
+        <div className="relative z-10 mb-8 max-w-3xl space-y-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand-muted px-3 py-1 text-xs font-bold tracking-wider text-brand uppercase">
+            <Calculator className="h-3.5 w-3.5" />
             <span>Transparent Planning Tool</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-foreground dark:text-white">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl dark:text-white">
             Instant Cleaning Budget Estimator
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground dark:text-slate-300 leading-relaxed">
-            Use our interactive estimator to gauge typical investment and frequency discounts before scheduling a physical walk-through.
+          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base dark:text-slate-300">
+            Use our interactive estimator to gauge typical investment and frequency discounts before
+            scheduling a physical walk-through.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
+        <div className="relative z-10 grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
           {/* Controls Column */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="grid grid-cols-2 gap-2 p-1.5 bg-secondary/70 backdrop-blur-md rounded-2xl border border-border/80">
+          <div className="space-y-6 lg:col-span-7">
+            <div className="grid grid-cols-2 gap-2 rounded-2xl border border-border/80 bg-secondary/70 p-1.5 backdrop-blur-md">
               <button
                 type="button"
                 onClick={() => setType("commercial")}
-                className={`py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer ${
+                className={`cursor-pointer rounded-xl py-2.5 text-xs font-semibold transition-all sm:text-sm ${
                   type === "commercial"
-                    ? "bg-primary text-primary-foreground shadow-md font-bold"
+                    ? "bg-primary font-bold text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -104,9 +105,9 @@ export function CostEstimator() {
               <button
                 type="button"
                 onClick={() => setType("residential")}
-                className={`py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer ${
+                className={`cursor-pointer rounded-xl py-2.5 text-xs font-semibold transition-all sm:text-sm ${
                   type === "residential"
-                    ? "bg-primary text-primary-foreground shadow-md font-bold"
+                    ? "bg-primary font-bold text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -114,10 +115,10 @@ export function CostEstimator() {
               </button>
             </div>
 
-            <div className="space-y-3 bg-secondary/40 backdrop-blur-md p-5 rounded-2xl border border-border/80">
-              <div className="flex justify-between items-center text-sm font-semibold">
+            <div className="space-y-3 rounded-2xl border border-border/80 bg-secondary/40 p-5 backdrop-blur-md">
+              <div className="flex items-center justify-between text-sm font-semibold">
                 <span className="text-foreground dark:text-slate-200">Approximate Floor Area</span>
-                <span className="text-brand font-bold font-mono text-base sm:text-lg">
+                <span className="font-mono text-base font-bold text-brand sm:text-lg">
                   {sqFt.toLocaleString()} sq ft
                 </span>
               </div>
@@ -128,9 +129,9 @@ export function CostEstimator() {
                 step={500}
                 value={sqFt}
                 onChange={(e) => setSqFt(Number(e.target.value))}
-                className="w-full accent-brand h-2 bg-secondary rounded-lg cursor-pointer"
+                className="h-2 w-full cursor-pointer rounded-lg bg-secondary accent-brand"
               />
-              <div className="flex justify-between text-[11px] text-muted-foreground font-medium">
+              <div className="flex justify-between text-[11px] font-medium text-muted-foreground">
                 <span>1,000 sq ft</span>
                 <span>10,000 sq ft</span>
                 <span>25,000+ sq ft</span>
@@ -138,31 +139,31 @@ export function CostEstimator() {
             </div>
 
             <div className="space-y-2.5">
-              <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground dark:text-slate-300">
+              <span className="text-xs font-bold tracking-wider text-muted-foreground uppercase dark:text-slate-300">
                 Cleaning Cadence
               </span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
                 {FREQUENCY_OPTIONS.map((option) => (
                   <button
                     key={option.id}
                     type="button"
                     onClick={() => setFreq(option.id)}
-                    className={`p-3.5 rounded-2xl text-left border text-xs transition-all cursor-pointer backdrop-blur-md ${
+                    className={`cursor-pointer rounded-2xl border p-3.5 text-left text-xs backdrop-blur-md transition-all ${
                       freq === option.id
-                        ? "border-brand bg-brand/15 text-foreground dark:text-white shadow-md shadow-brand/10 font-bold"
+                        ? "border-brand bg-brand/15 font-bold text-foreground shadow-md shadow-brand/10 dark:text-white"
                         : "border-border/80 bg-secondary/40 text-muted-foreground hover:border-border hover:text-foreground"
                     }`}
                   >
                     <div className="font-bold text-foreground dark:text-white">{option.label}</div>
-                    <div className="text-[10px] text-brand font-semibold mt-1">{option.tag}</div>
+                    <div className="mt-1 text-[10px] font-semibold text-brand">{option.tag}</div>
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="bg-secondary/40 backdrop-blur-md p-4 rounded-2xl border border-border/80 space-y-2.5">
-                <Label className="text-foreground dark:text-slate-200 text-xs font-bold uppercase tracking-wider block">
+            <div className="grid grid-cols-1 gap-4 pt-1 sm:grid-cols-2">
+              <div className="space-y-2.5 rounded-2xl border border-border/80 bg-secondary/40 p-4 backdrop-blur-md">
+                <Label className="block text-xs font-bold tracking-wider text-foreground uppercase dark:text-slate-200">
                   Number of Restrooms / Hubs
                 </Label>
                 <div className="flex items-center gap-1.5">
@@ -171,7 +172,7 @@ export function CostEstimator() {
                       key={num}
                       type="button"
                       onClick={() => setRestrooms(num)}
-                      className={`w-9 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      className={`h-9 w-9 cursor-pointer rounded-xl text-xs font-bold transition-all ${
                         restrooms === num
                           ? "bg-brand text-brand-foreground shadow-sm"
                           : "bg-secondary text-foreground hover:bg-secondary/80"
@@ -183,63 +184,72 @@ export function CostEstimator() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-4 rounded-2xl bg-secondary/40 backdrop-blur-md border border-border/80">
+              <div className="flex items-center justify-between rounded-2xl border border-border/80 bg-secondary/40 p-4 backdrop-blur-md">
                 <div className="space-y-0.5">
                   <div className="text-xs font-bold text-foreground dark:text-white">
                     Carpet & Grout Steam Care
                   </div>
-                  <div className="text-[11px] text-muted-foreground">High-filtration extraction</div>
+                  <div className="text-[11px] text-muted-foreground">
+                    High-filtration extraction
+                  </div>
                 </div>
                 <input
                   type="checkbox"
                   checked={carpetCare}
                   onChange={(e) => setCarpetCare(e.target.checked)}
-                  className="w-5 h-5 accent-brand rounded cursor-pointer"
+                  className="h-5 w-5 cursor-pointer rounded accent-brand"
                 />
               </div>
             </div>
           </div>
 
           {/* Results Summary Column */}
-          <div className="lg:col-span-5 bg-secondary/70 dark:bg-slate-900/80 backdrop-blur-2xl p-6 sm:p-7 rounded-2xl border border-brand/40 space-y-6 shadow-xl">
-            <div className="flex items-center justify-between pb-4 border-b border-border/80 dark:border-white/10">
-              <span className="text-xs font-semibold text-muted-foreground dark:text-slate-300">Estimated Plan</span>
-              <span className="text-[10px] px-2.5 py-1 rounded-lg bg-brand/20 text-brand font-bold uppercase tracking-wider">
+          <div className="space-y-6 rounded-2xl border border-brand/40 bg-secondary/70 p-6 shadow-xl backdrop-blur-2xl sm:p-7 lg:col-span-5 dark:bg-slate-900/80">
+            <div className="flex items-center justify-between border-b border-border/80 pb-4 dark:border-white/10">
+              <span className="text-xs font-semibold text-muted-foreground dark:text-slate-300">
+                Estimated Plan
+              </span>
+              <span className="rounded-lg bg-brand/20 px-2.5 py-1 text-[10px] font-bold tracking-wider text-brand uppercase">
                 Subject to walk-through
               </span>
             </div>
 
             <div className="space-y-4">
               <div>
-                <span className="text-xs text-muted-foreground font-medium block">Estimated Cost Per Visit</span>
-                <div className="text-3xl sm:text-4xl font-extrabold text-foreground dark:text-white font-display mt-0.5">
+                <span className="block text-xs font-medium text-muted-foreground">
+                  Estimated Cost Per Visit
+                </span>
+                <div className="mt-0.5 font-display text-3xl font-extrabold text-foreground sm:text-4xl dark:text-white">
                   ${estimatedPerVisit}
-                  <span className="text-xs text-muted-foreground font-normal"> / session</span>
+                  <span className="text-xs font-normal text-muted-foreground"> / session</span>
                 </div>
               </div>
 
-              <div className="p-4 bg-background dark:bg-slate-950/80 rounded-2xl border border-border/80 dark:border-white/10 space-y-1 shadow-inner">
-                <span className="text-xs text-muted-foreground block font-medium">Projected Monthly Investment</span>
-                <div className="text-2xl font-extrabold text-brand font-mono">
+              <div className="space-y-1 rounded-2xl border border-border/80 bg-background p-4 shadow-inner dark:border-white/10 dark:bg-slate-950/80">
+                <span className="block text-xs font-medium text-muted-foreground">
+                  Projected Monthly Investment
+                </span>
+                <div className="font-mono text-2xl font-extrabold text-brand">
                   ${estimatedMonthly.toLocaleString()}{" "}
-                  <span className="text-xs text-muted-foreground font-normal">/ month</span>
+                  <span className="text-xs font-normal text-muted-foreground">/ month</span>
                 </div>
-                <p className="text-[11px] text-muted-foreground leading-relaxed pt-1">
-                  Includes verified cleaner crews, professional supplies, equipment, and $5M liability insurance.
+                <p className="pt-1 text-[11px] leading-relaxed text-muted-foreground">
+                  Includes verified cleaner crews, professional supplies, equipment, and $5M
+                  liability insurance.
                 </p>
               </div>
 
-              <div className="space-y-2.5 text-xs text-foreground dark:text-slate-200 font-medium">
+              <div className="space-y-2.5 text-xs font-medium text-foreground dark:text-slate-200">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-brand" />
                   <span>Dedicated account supervisor assigned</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-brand" />
                   <span>30-Day SLA Satisfaction Guarantee</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-brand" />
                   <span>EPA Green Seal hospital-grade formulas</span>
                 </div>
               </div>
@@ -248,14 +258,14 @@ export function CostEstimator() {
             <Button
               variant="default"
               onClick={scrollToInquiryForm}
-              className="w-full h-12 bg-brand text-brand-foreground hover:bg-brand/90 font-bold rounded-xl shadow-lg shadow-brand/25 cursor-pointer group"
+              className="group h-12 w-full cursor-pointer rounded-xl bg-brand font-bold text-brand-foreground shadow-lg shadow-brand/25 hover:bg-brand/90"
             >
               <span>Lock In Estimate with B2B Inquiry</span>
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
         </div>
       </div>
     </section>
   );
-};
+}

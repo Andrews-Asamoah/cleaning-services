@@ -7,47 +7,50 @@ import Image from "next/image";
 
 interface ServiceCardProps {
   service: ServiceDetail;
-  onRequestProposal: () => void;
+  onRequestProposal?: () => void;
 }
 
 export function ServiceCard({ service, onRequestProposal }: ServiceCardProps) {
   return (
-    <Card className="overflow-hidden pt-0 bg-card/80 backdrop-blur-xl border border-border/80 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-3xl flex flex-col justify-between group">
+    <Card className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-card/80 pt-0 shadow-lg backdrop-blur-xl transition-all duration-300 hover:shadow-2xl">
       {/* Image container flushed to the very top with zero padding */}
       <div className="relative h-64 w-full overflow-hidden">
         <Image
           src={service.imageUrl}
           alt={service.title}
           fill
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-6">
-          <div className="text-white space-y-1">
-            <Badge variant="default" className="bg-brand text-brand-foreground font-bold tracking-wider uppercase text-[10px] shadow-sm">
+        <div className="absolute inset-0 flex items-end bg-linear-to-t from-slate-950/85 via-slate-950/20 to-transparent p-6">
+          <div className="space-y-1 text-white">
+            <Badge
+              variant="default"
+              className="bg-brand text-[10px] font-bold tracking-wider text-brand-foreground uppercase shadow-sm"
+            >
               {service.category}
             </Badge>
-            <h3 className="text-2xl font-bold font-display tracking-tight text-white">
+            <h3 className="font-display text-2xl font-bold tracking-tight text-white">
               {service.title}
             </h3>
           </div>
         </div>
       </div>
 
-      <CardContent className="p-6 sm:p-7 space-y-6 flex-1 flex flex-col justify-between">
+      <CardContent className="flex flex-1 flex-col justify-between space-y-6 p-6 sm:p-7">
         <div className="space-y-5">
-          <p className="text-sm text-muted-foreground leading-relaxed font-normal">
+          <p className="text-sm leading-relaxed font-normal text-muted-foreground">
             {service.description}
           </p>
 
           <div className="space-y-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-foreground block">
+            <span className="block text-xs font-bold tracking-wider text-foreground uppercase">
               Core Scope Highlights:
             </span>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-muted-foreground">
+            <ul className="grid grid-cols-1 gap-2.5 text-xs text-muted-foreground sm:grid-cols-2">
               {service.features.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <div className="w-4 h-4 rounded-full bg-brand/15 text-brand flex items-center justify-center shrink-0 mt-0.5">
-                    <Check className="w-3 h-3" />
+                  <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+                    <Check className="h-3 w-3" />
                   </div>
                   <span className="font-medium text-foreground/90">{item}</span>
                 </li>
@@ -55,20 +58,18 @@ export function ServiceCard({ service, onRequestProposal }: ServiceCardProps) {
             </ul>
           </div>
 
-          <div className="p-3.5 bg-secondary/50 backdrop-blur-md rounded-2xl border border-border/60 text-xs flex flex-col gap-0.5">
-            <span className="font-bold text-foreground">
-              Best Suited For:
-            </span>
-            <span className="text-muted-foreground font-medium">{service.idealFor}</span>
+          <div className="flex flex-col gap-0.5 rounded-2xl border border-border/60 bg-secondary/50 p-3.5 text-xs backdrop-blur-md">
+            <span className="font-bold text-foreground">Best Suited For:</span>
+            <span className="font-medium text-muted-foreground">{service.idealFor}</span>
           </div>
         </div>
 
-        <div className="pt-5 border-t border-border/60 flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 border-t border-border/60 pt-5">
           <div>
-            <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold block">
+            <span className="block text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
               Standard Rate
             </span>
-            <span className="text-sm sm:text-base font-extrabold text-brand font-display">
+            <span className="font-display text-sm font-extrabold text-brand sm:text-base">
               {service.pricingEstimate}
             </span>
           </div>
@@ -76,13 +77,13 @@ export function ServiceCard({ service, onRequestProposal }: ServiceCardProps) {
             variant="default"
             size="sm"
             onClick={onRequestProposal}
-            className="font-semibold px-5 rounded-xl bg-brand text-brand-foreground hover:bg-brand/90 shadow-md cursor-pointer group/btn"
+            className="group/btn cursor-pointer rounded-xl bg-brand px-5 font-semibold text-brand-foreground shadow-md hover:bg-brand/90"
           >
             <span>Request Proposal</span>
-            <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover/btn:translate-x-0.5 transition-transform" />
+            <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" />
           </Button>
         </div>
       </CardContent>
     </Card>
   );
-};
+}

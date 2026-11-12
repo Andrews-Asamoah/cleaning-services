@@ -29,7 +29,10 @@ export const SHIFT_OPTIONS: { value: ShiftPreference; label: string }[] = [
 ];
 
 export const EXPERIENCE_OPTIONS: { value: ExperienceYears; label: string }[] = [
-  { value: "No experience (Eager to learn in Academy)", label: "No experience (Eager to learn in Academy)" },
+  {
+    value: "No experience (Eager to learn in Academy)",
+    label: "No experience (Eager to learn in Academy)",
+  },
   { value: "Less than 1 Year", label: "Less than 1 Year" },
   { value: "1-2 Years", label: "1-2 Years" },
   { value: "3-5 Years", label: "3-5 Years" },

@@ -13,13 +13,7 @@ import {
   CalendarCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useEffect, useState } from "react";
@@ -29,21 +23,21 @@ interface NavbarProps {
 }
 
 const navLinks = [
-  { label: "Home", href: "/", icon: <Sparkles className="w-4 h-4" /> },
+  { label: "Home", href: "/", icon: <Sparkles className="h-4 w-4" /> },
   {
     label: "Services",
     href: "/services",
-    icon: <Building2 className="w-4 h-4" />,
+    icon: <Building2 className="h-4 w-4" />,
   },
   {
     label: "Careers",
     href: "/careers",
-    icon: <Briefcase className="w-4 h-4" />,
+    icon: <Briefcase className="h-4 w-4" />,
   },
   {
     label: "Contact",
     href: "/contact",
-    icon: <PhoneCall className="w-4 h-4" />,
+    icon: <PhoneCall className="h-4 w-4" />,
   },
 ];
 
@@ -71,37 +65,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickQuote }) => {
     <header className="sticky top-4 z-40 w-full px-4 sm:px-6 lg:px-8">
       {/* Floating Modern Glassmorphism Capsule Navbar Container */}
       <div
-        className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-300 px-4 sm:px-6 py-3 rounded-2xl sm:rounded-full ${
+        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 sm:rounded-full sm:px-6 ${
           isScrolled
-            ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-2xl shadow-xl shadow-slate-950/5 border border-white/40 dark:border-white/10"
-            : "bg-white/60 dark:bg-slate-950/60 backdrop-blur-xl shadow-lg shadow-slate-950/5 border border-white/30 dark:border-white/10"
+            ? "border border-white/40 bg-white/80 shadow-xl shadow-slate-950/5 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/80"
+            : "border border-white/30 bg-white/60 shadow-lg shadow-slate-950/5 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/60"
         }`}
       >
         {/* Brand */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-xl shrink-0"
+          className="group flex shrink-0 items-center gap-2.5 rounded-xl text-left focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand flex items-center justify-center text-brand-foreground shadow-md shadow-brand/25 group-hover:scale-105 transition-transform shrink-0">
-            <Sparkles className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-brand-foreground" />
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-md shadow-brand/25 transition-transform group-hover:scale-105 sm:h-10 sm:w-10">
+            <Sparkles className="h-4.5 w-4.5 text-brand-foreground sm:h-5 sm:w-5" />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="text-lg sm:text-xl font-extrabold tracking-tight text-foreground whitespace-nowrap font-display">
+              <span className="font-display text-lg font-extrabold tracking-tight whitespace-nowrap text-foreground sm:text-xl">
                 Aura<span className="text-brand">Clean</span>
               </span>
-              <span className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-brand-muted text-brand rounded-md">
+              <span className="hidden rounded-md bg-brand-muted px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-brand uppercase xl:inline-block">
                 & Staffing
               </span>
             </div>
-            <p className="text-[11px] text-muted-foreground hidden sm:block truncate">
+            <p className="hidden truncate text-[11px] text-muted-foreground sm:block">
               Premium Spaces • Trusted Personnel
             </p>
           </div>
         </Link>
 
         {/* Desktop nav — Floating Capsule Pill */}
-        <nav className="hidden lg:flex items-center gap-1 bg-secondary/60 dark:bg-secondary/40 backdrop-blur-md p-1.5 rounded-full border border-border/60">
+        <nav className="hidden items-center gap-1 rounded-full border border-border/60 bg-secondary/60 p-1.5 backdrop-blur-md lg:flex dark:bg-secondary/40">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -109,10 +103,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickQuote }) => {
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+                className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none ${
                   isActive
                     ? "bg-primary text-primary-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/80"
+                    : "text-muted-foreground hover:bg-secondary/80 hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -122,16 +116,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickQuote }) => {
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <ThemeToggle />
 
           <Button
             variant="default"
             size="sm"
             onClick={handleQuoteClick}
-            className="hidden md:inline-flex rounded-full px-5 gap-1.5 bg-brand text-brand-foreground hover:bg-brand/90 shadow-sm font-semibold cursor-pointer"
+            className="hidden cursor-pointer gap-1.5 rounded-full bg-brand px-5 font-semibold text-brand-foreground shadow-sm hover:bg-brand/90 md:inline-flex"
           >
-            <CalendarCheck className="w-4 h-4" />
+            <CalendarCheck className="h-4 w-4" />
             <span>Fast Quote</span>
           </Button>
 
@@ -143,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickQuote }) => {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-xl border-border/80 bg-card/60 backdrop-blur-md h-10 w-10 cursor-pointer"
+                    className="h-10 w-10 cursor-pointer rounded-xl border-border/80 bg-card/60 backdrop-blur-md"
                     aria-label="Open navigation menu"
                   />
                 }
@@ -152,26 +146,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickQuote }) => {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[85vw] max-w-sm p-6 flex flex-col justify-between overflow-y-auto bg-card/95 backdrop-blur-2xl border-l border-border/80"
+                className="flex w-[85vw] max-w-sm flex-col justify-between overflow-y-auto border-l border-border/80 bg-card/95 p-6 backdrop-blur-2xl"
               >
                 <div>
-                  <SheetHeader className="text-left pb-6 border-b border-border/60 px-0">
+                  <SheetHeader className="border-b border-border/60 px-0 pb-6 text-left">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-brand-foreground shrink-0 shadow-sm">
-                        <Sparkles className="w-5 h-5" />
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-sm">
+                        <Sparkles className="h-5 w-5" />
                       </div>
                       <div className="min-w-0">
-                        <SheetTitle className="text-lg font-bold truncate font-display text-foreground">
+                        <SheetTitle className="truncate font-display text-lg font-bold text-foreground">
                           AuraClean & Staffing
                         </SheetTitle>
-                        <p className="text-xs text-muted-foreground truncate">
+                        <p className="truncate text-xs text-muted-foreground">
                           Commercial & Residential Services
                         </p>
                       </div>
                     </div>
                   </SheetHeader>
 
-                  <div className="py-6 space-y-2">
+                  <div className="space-y-2 py-6">
                     {navLinks.map((link) => {
                       const isActive = pathname === link.href;
                       return (
@@ -180,53 +174,52 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickQuote }) => {
                           href={link.href}
                           onClick={() => setIsMobileOpen(false)}
                           aria-current={isActive ? "page" : undefined}
-                          className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-colors min-h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+                          className={`flex min-h-11 w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none ${
                             isActive
                               ? "bg-brand text-brand-foreground shadow-sm"
                               : "text-foreground/80 hover:bg-secondary/80 hover:text-foreground"
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <span className={isActive ? "text-brand-foreground" : "text-muted-foreground"}>
+                            <span
+                              className={
+                                isActive ? "text-brand-foreground" : "text-muted-foreground"
+                              }
+                            >
                               {link.icon}
                             </span>
                             <span>{link.label}</span>
                           </div>
-                          <ChevronRight className="w-4 h-4 opacity-60 shrink-0" />
+                          <ChevronRight className="h-4 w-4 shrink-0 opacity-60" />
                         </Link>
                       );
                     })}
                   </div>
 
-                  <div className="space-y-3 pt-4 border-t border-border/60">
+                  <div className="space-y-3 border-t border-border/60 pt-4">
                     <Button
-                      className="w-full justify-center gap-2 min-h-11 bg-brand text-brand-foreground hover:bg-brand/90 font-semibold rounded-xl cursor-pointer"
+                      className="min-h-11 w-full cursor-pointer justify-center gap-2 rounded-xl bg-brand font-semibold text-brand-foreground hover:bg-brand/90"
                       onClick={() => {
                         setIsMobileOpen(false);
                         handleQuoteClick();
                       }}
                     >
-                      <CalendarCheck className="w-4 h-4" />
+                      <CalendarCheck className="h-4 w-4" />
                       Request Fast Quote
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-center gap-2 min-h-11 border-border bg-transparent hover:bg-secondary text-foreground font-semibold rounded-xl cursor-pointer"
-                      render={
-                        <Link
-                          href="/careers"
-                          onClick={() => setIsMobileOpen(false)}
-                        />
-                      }
+                      className="min-h-11 w-full cursor-pointer justify-center gap-2 rounded-xl border-border bg-transparent font-semibold text-foreground hover:bg-secondary"
+                      render={<Link href="/careers" onClick={() => setIsMobileOpen(false)} />}
                     >
-                      <Briefcase className="w-4 h-4 text-brand" />
+                      <Briefcase className="h-4 w-4 text-brand" />
                       Submit CV / Join Team
                     </Button>
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-border/60 text-xs text-muted-foreground flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-brand shrink-0" />
+                <div className="flex items-center gap-2 border-t border-border/60 pt-6 text-xs text-muted-foreground">
+                  <ShieldCheck className="h-4 w-4 shrink-0 text-brand" />
                   <span>Licensed, $5M Insured & Bonded Facility Service</span>
                 </div>
               </SheetContent>

@@ -9,11 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Field,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import {
   Select,
   SelectContent,
@@ -55,7 +51,7 @@ function ConfettiBurst() {
   const [pieces] = useState<ConfettiPiece[]>(() => generateConfettiPieces(28));
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden z-20">
+    <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
       {pieces.map((piece) => (
         <motion.span
           key={piece.id}
@@ -67,7 +63,7 @@ function ConfettiBurst() {
             rotate: piece.rotate,
           }}
           transition={{ duration: 1.1, delay: piece.delay, ease: "easeOut" }}
-          className="absolute left-1/2 top-0 rounded-[1px]"
+          className="absolute top-0 left-1/2 rounded-[1px]"
           style={{
             width: piece.width,
             height: piece.height,
@@ -110,7 +106,10 @@ const SHIFT_OPTIONS: { value: ShiftPreference; label: string }[] = [
 ];
 
 const EXPERIENCE_OPTIONS: { value: ExperienceYears; label: string }[] = [
-  { value: "No experience (Eager to learn in Academy)", label: "No experience (Eager to learn in Academy)" },
+  {
+    value: "No experience (Eager to learn in Academy)",
+    label: "No experience (Eager to learn in Academy)",
+  },
   { value: "Less than 1 Year", label: "Less than 1 Year" },
   { value: "1-2 Years", label: "1-2 Years" },
   { value: "3-5 Years", label: "3-5 Years" },
@@ -135,9 +134,9 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
   const safePositionId = selectedPositionId ?? JOB_OPENINGS[0]?.id ?? "";
 
   const [appData, setAppData] = useState<ApplicationData>(() =>
-    DEFAULT_APPLICATION_DATA(safePositionId)
+    DEFAULT_APPLICATION_DATA(safePositionId),
   );
-  
+
   const [prevSelectedPositionId, setPrevSelectedPositionId] = useState(selectedPositionId);
   if (selectedPositionId !== prevSelectedPositionId) {
     setPrevSelectedPositionId(selectedPositionId);
@@ -153,10 +152,8 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [applicationRef, setApplicationRef] = useState("");
 
-  const updateField = <K extends keyof ApplicationData>(
-    key: K,
-    value: ApplicationData[K]
-  ) => setAppData((prev) => ({ ...prev, [key]: value }));
+  const updateField = <K extends keyof ApplicationData>(key: K, value: ApplicationData[K]) =>
+    setAppData((prev) => ({ ...prev, [key]: value }));
 
   const handleFileChange = (file: File | null) => {
     if (!file) {
@@ -192,7 +189,7 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
       setShowConfetti(true);
 
       toast.success(
-        `Application received! Reference #${generatedRef}. HR will review within 48 hours.`
+        `Application received! Reference #${generatedRef}. HR will review within 48 hours.`,
       );
 
       setTimeout(() => setShowConfetti(false), 1400);
@@ -208,31 +205,32 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
   };
 
   return (
-    <section id="application-form-section" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Card className="bg-card/90 pt-0 dark:bg-card/40 backdrop-blur-2xl border border-border/80 shadow-2xl overflow-hidden rounded-3xl relative">
+    <section id="application-form-section" className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <Card className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/90 pt-0 shadow-2xl backdrop-blur-2xl dark:bg-card/40">
         {/* Ambient background glow */}
-        <div className="absolute right-0 top-0 w-96 h-96 bg-brand/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl" />
 
         {/* Minimal Modern Header */}
-        <div className="p-6 sm:p-8 border-b border-border/70 relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-secondary/30">
+        <div className="relative z-10 flex flex-col justify-between gap-4 border-b border-border/70 bg-secondary/30 p-6 sm:flex-row sm:items-center sm:p-8">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-muted text-brand text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-muted px-3 py-1 text-xs font-bold tracking-wider text-brand uppercase">
+              <Sparkles className="h-3.5 w-3.5" />
               <span>Direct Talent Acquisition Pipeline</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-foreground">
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
               Submit Your CV / Application
             </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground max-w-lg">
-              Upload your resume and contact details below. Our HR team manually reviews every document and responds within 48 hours.
+            <p className="max-w-lg text-xs text-muted-foreground sm:text-sm">
+              Upload your resume and contact details below. Our HR team manually reviews every
+              document and responds within 48 hours.
             </p>
           </div>
-          <div className="w-12 h-12 rounded-2xl bg-brand/15 text-brand flex items-center justify-center shrink-0 border border-brand/20 shadow-sm">
-            <Briefcase className="w-6 h-6" />
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-brand/20 bg-brand/15 text-brand shadow-sm">
+            <Briefcase className="h-6 w-6" />
           </div>
         </div>
 
-        <CardContent className="relative p-6 sm:p-8 z-10">
+        <CardContent className="relative z-10 p-6 sm:p-8">
           {showConfetti && <ConfettiBurst />}
 
           <AnimatePresence mode="wait">
@@ -247,9 +245,12 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
                 transition={{ duration: 0.2 }}
               >
                 <FieldGroup>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <Field>
-                      <FieldLabel htmlFor="app-name" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="app-name"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Your Full Name *
                       </FieldLabel>
                       <Input
@@ -258,12 +259,15 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
                         placeholder="e.g. David Alcantara"
                         value={appData.fullName}
                         onChange={(e) => updateField("fullName", e.target.value)}
-                        className="rounded-xl bg-secondary/50 border-border/80 h-11 focus-visible:ring-brand"
+                        className="h-11 rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                       />
                     </Field>
 
                     <Field>
-                      <FieldLabel htmlFor="app-phone" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="app-phone"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Mobile Phone Number *
                       </FieldLabel>
                       <Input
@@ -273,14 +277,17 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
                         placeholder="(555) 345-6789"
                         value={appData.phone}
                         onChange={(e) => updateField("phone", e.target.value)}
-                        className="rounded-xl bg-secondary/50 border-border/80 h-11 focus-visible:ring-brand"
+                        className="h-11 rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                       />
                     </Field>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <Field>
-                      <FieldLabel htmlFor="app-email" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="app-email"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Email Address *
                       </FieldLabel>
                       <Input
@@ -290,19 +297,25 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
                         placeholder="david.alcantara@email.com"
                         value={appData.email}
                         onChange={(e) => updateField("email", e.target.value)}
-                        className="rounded-xl bg-secondary/50 border-border/80 h-11 focus-visible:ring-brand"
+                        className="h-11 rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                       />
                     </Field>
 
                     <Field>
-                      <FieldLabel htmlFor="app-role" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="app-role"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Desired Position *
                       </FieldLabel>
                       <Select
                         value={appData.positionId}
                         onValueChange={(value) => updateField("positionId", value ?? "")}
                       >
-                        <SelectTrigger id="app-role" className="w-full rounded-xl bg-secondary/50 border-border/80 h-11">
+                        <SelectTrigger
+                          id="app-role"
+                          className="h-11 w-full rounded-xl border-border/80 bg-secondary/50"
+                        >
                           <SelectValue placeholder="Select a position" />
                         </SelectTrigger>
                         <SelectContent className="rounded-xl">
@@ -316,18 +329,27 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
                     </Field>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <Field>
-                      <FieldLabel htmlFor="app-shift" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="app-shift"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Preferred Shift
                       </FieldLabel>
                       <Select
                         value={appData.shiftPreference}
                         onValueChange={(value) =>
-                          updateField("shiftPreference", value as ApplicationData["shiftPreference"])
+                          updateField(
+                            "shiftPreference",
+                            value as ApplicationData["shiftPreference"],
+                          )
                         }
                       >
-                        <SelectTrigger id="app-shift" className="w-full rounded-xl bg-secondary/50 border-border/80 h-11">
+                        <SelectTrigger
+                          id="app-shift"
+                          className="h-11 w-full rounded-xl border-border/80 bg-secondary/50"
+                        >
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent className="rounded-xl">
@@ -341,16 +363,25 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
                     </Field>
 
                     <Field>
-                      <FieldLabel htmlFor="app-exp" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="app-exp"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Cleaning / Maintenance Experience
                       </FieldLabel>
                       <Select
                         value={appData.experienceYears}
                         onValueChange={(value) =>
-                          updateField("experienceYears", value as ApplicationData["experienceYears"])
+                          updateField(
+                            "experienceYears",
+                            value as ApplicationData["experienceYears"],
+                          )
                         }
                       >
-                        <SelectTrigger id="app-exp" className="w-full rounded-xl bg-secondary/50 border-border/80 h-11">
+                        <SelectTrigger
+                          id="app-exp"
+                          className="h-11 w-full rounded-xl border-border/80 bg-secondary/50"
+                        >
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent className="rounded-xl">
@@ -371,7 +402,10 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
                   />
 
                   <Field>
-                    <FieldLabel htmlFor="app-note" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    <FieldLabel
+                      htmlFor="app-note"
+                      className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                    >
                       Brief Introduction or Availability
                     </FieldLabel>
                     <Textarea
@@ -380,28 +414,30 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
                       placeholder="Tell us a little bit about yourself, your current location, or when you can start..."
                       value={appData.coverNote}
                       onChange={(e) => updateField("coverNote", e.target.value)}
-                      className="rounded-xl bg-secondary/50 border-border/80 focus-visible:ring-brand"
+                      className="rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                     />
                   </Field>
 
-                  <div className="p-4 rounded-2xl bg-secondary/40 backdrop-blur-md border border-border/80 text-xs text-muted-foreground flex items-start gap-3">
-                    <HelpCircle className="w-4 h-4 text-brand shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-3 rounded-2xl border border-border/80 bg-secondary/40 p-4 text-xs text-muted-foreground backdrop-blur-md">
+                    <HelpCircle className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
                     <p className="leading-relaxed">
-                      <strong className="text-foreground">Privacy & Review Notice:</strong> All submitted resumes are manually evaluated by our Talent Acquisition Team. Your personal information is encrypted and never shared with third parties.
+                      <strong className="text-foreground">Privacy & Review Notice:</strong> All
+                      submitted resumes are manually evaluated by our Talent Acquisition Team. Your
+                      personal information is encrypted and never shared with third parties.
                     </p>
                   </div>
 
-                  <div className="pt-2 flex justify-end">
+                  <div className="flex justify-end pt-2">
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full sm:w-auto h-12 px-8 font-bold gap-2 rounded-xl bg-brand text-brand-foreground hover:bg-brand/90 shadow-lg shadow-brand/20 cursor-pointer transition-all"
+                      className="h-12 w-full cursor-pointer gap-2 rounded-xl bg-brand px-8 font-bold text-brand-foreground shadow-lg shadow-brand/20 transition-all hover:bg-brand/90 sm:w-auto"
                     >
                       {isSubmitting ? (
                         <span>Processing Application...</span>
                       ) : (
                         <>
-                          <Send className="w-4 h-4" />
+                          <Send className="h-4 w-4" />
                           <span>Submit Application for Manual Review</span>
                         </>
                       )}
@@ -429,4 +465,4 @@ export function ApplicationForm({ selectedPositionId }: ApplicationFormProps) {
       </Card>
     </section>
   );
-};
+}

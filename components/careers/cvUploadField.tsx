@@ -52,7 +52,10 @@ export function CvUploadField({ file, onFileChange, error }: CvUploadFieldProps)
 
   return (
     <Field data-invalid={!!error} className="space-y-2">
-      <FieldLabel htmlFor="cv-upload" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+      <FieldLabel
+        htmlFor="cv-upload"
+        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+      >
         Attach Your CV / Resume *
       </FieldLabel>
       <input
@@ -71,10 +74,10 @@ export function CvUploadField({ file, onFileChange, error }: CvUploadFieldProps)
           onDrop={handleDrop}
           role="button"
           tabIndex={0}
-          className="border-2 border-dashed border-border hover:border-brand rounded-2xl p-6 sm:p-8 text-center cursor-pointer transition-all bg-secondary/30 backdrop-blur-md group"
+          className="group cursor-pointer rounded-2xl border-2 border-dashed border-border bg-secondary/30 p-6 text-center backdrop-blur-md transition-all hover:border-brand sm:p-8"
         >
-          <div className="w-12 h-12 rounded-2xl bg-brand/15 text-brand mx-auto flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm border border-brand/20">
-            <UploadCloud className="w-6 h-6" />
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-brand/20 bg-brand/15 text-brand shadow-sm transition-transform group-hover:scale-110">
+            <UploadCloud className="h-6 w-6" />
           </div>
           <div className="mt-3 text-sm font-bold text-foreground">
             Click to browse or drag & drop your CV here
@@ -84,16 +87,16 @@ export function CvUploadField({ file, onFileChange, error }: CvUploadFieldProps)
           </FieldDescription>
         </div>
       ) : (
-        <div className="p-4 rounded-2xl bg-brand-muted border border-brand/30 flex items-center justify-between backdrop-blur-md shadow-sm">
-          <div className="flex items-center gap-3.5 min-w-0">
-            <div className="w-10 h-10 rounded-xl bg-brand text-brand-foreground flex items-center justify-center shrink-0 shadow-sm">
-              <FileText className="w-5 h-5" />
+        <div className="flex items-center justify-between rounded-2xl border border-brand/30 bg-brand-muted p-4 shadow-sm backdrop-blur-md">
+          <div className="flex min-w-0 items-center gap-3.5">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-sm">
+              <FileText className="h-5 w-5" />
             </div>
             <div className="min-w-0">
-              <p className="text-xs font-bold text-foreground truncate max-w-[220px] sm:max-w-xs">
+              <p className="max-w-[220px] truncate text-xs font-bold text-foreground sm:max-w-xs">
                 {file.name}
               </p>
-              <p className="text-[11px] text-brand font-semibold">
+              <p className="text-[11px] font-semibold text-brand">
                 {(file.size / 1024).toFixed(1)} KB • Ready for manual review
               </p>
             </div>
@@ -103,14 +106,16 @@ export function CvUploadField({ file, onFileChange, error }: CvUploadFieldProps)
             variant="ghost"
             size="icon"
             onClick={removeFile}
-            className="text-muted-foreground hover:text-destructive rounded-xl cursor-pointer"
+            className="cursor-pointer rounded-xl text-muted-foreground hover:text-destructive"
           >
-            <X className="w-4 h-4" />
+            <X className="h-4 w-4" />
           </Button>
         </div>
       )}
 
-      {error ? <FieldError className="text-xs font-medium text-destructive mt-1">{error}</FieldError> : null}
+      {error ? (
+        <FieldError className="mt-1 text-xs font-medium text-destructive">{error}</FieldError>
+      ) : null}
     </Field>
   );
-};
+}

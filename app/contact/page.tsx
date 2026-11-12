@@ -14,8 +14,8 @@ export default function ContactPage() {
       <ContactInfoCards />
 
       {/* 3. General Query Form & Interactive Map / Location Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <ContactFormCard />
           </div>

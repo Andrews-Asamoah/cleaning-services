@@ -33,53 +33,53 @@
        at 14–16px, excellent x-height. The contrast against Fraunces is
        sharp without being jarring.
      (Loaded via next/font/google in app/layout.tsx) */
-  --font-sans:    var(--font-dm-sans);
+  --font-sans: var(--font-dm-sans);
   --font-display: var(--font-fraunces);
-  --font-mono:    var(--font-geist-mono);
+  --font-mono: var(--font-geist-mono);
 
   /* Radius scale — shadcn components inherit via --radius */
-  --radius-sm:  calc(var(--radius) * 0.6);
-  --radius-md:  calc(var(--radius) * 0.8);
-  --radius-lg:  var(--radius);
-  --radius-xl:  calc(var(--radius) * 1.4);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* Semantic colour aliases — components use these Tailwind utilities */
-  --color-background:           var(--background);
-  --color-foreground:           var(--foreground);
-  --color-card:                 var(--card);
-  --color-card-foreground:      var(--card-foreground);
-  --color-popover:              var(--popover);
-  --color-popover-foreground:   var(--popover-foreground);
-  --color-primary:              var(--primary);
-  --color-primary-foreground:   var(--primary-foreground);
-  --color-secondary:            var(--secondary);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted:                var(--muted);
-  --color-muted-foreground:     var(--muted-foreground);
-  --color-accent:               var(--accent);
-  --color-accent-foreground:    var(--accent-foreground);
-  --color-destructive:          var(--destructive);
-  --color-border:               var(--border);
-  --color-input:                var(--input);
-  --color-ring:                 var(--ring);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
   /* Brand accent — single deep-teal colour, used sparingly */
-  --color-brand:                var(--brand);
-  --color-brand-foreground:     var(--brand-foreground);
-  --color-brand-muted:          var(--brand-muted);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-muted: var(--brand-muted);
 
   /* Sidebar (required by shadcn) */
-  --color-sidebar:                      var(--sidebar);
-  --color-sidebar-foreground:           var(--sidebar-foreground);
-  --color-sidebar-primary:              var(--sidebar-primary);
-  --color-sidebar-primary-foreground:   var(--sidebar-primary-foreground);
-  --color-sidebar-accent:               var(--sidebar-accent);
-  --color-sidebar-accent-foreground:    var(--sidebar-accent-foreground);
-  --color-sidebar-border:               var(--sidebar-border);
-  --color-sidebar-ring:                 var(--sidebar-ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
   /* Chart tokens */
   --color-chart-1: var(--chart-1);
@@ -94,116 +94,116 @@
    ───────────────────────────────────────────────────────────────────────────── */
 :root {
   /* Base surfaces — ultra-clean, slightly cool-tinted off-white */
-  --background:           oklch(0.99 0.002 240);
-  --foreground:           oklch(0.145 0.01 240);
+  --background: oklch(0.99 0.002 240);
+  --foreground: oklch(0.145 0.01 240);
 
-  --card:                 oklch(1 0 0);
-  --card-foreground:      oklch(0.145 0.01 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0.01 240);
 
-  --popover:              oklch(1 0 0);
-  --popover-foreground:   oklch(0.145 0.01 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0.01 240);
 
   /* Primary — deep trustworthy navy */
-  --primary:              oklch(0.22 0.05 250);
-  --primary-foreground:   oklch(0.98 0 0);
+  --primary: oklch(0.22 0.05 250);
+  --primary-foreground: oklch(0.98 0 0);
 
   /* Secondary — soft aqua-tinted grey */
-  --secondary:            oklch(0.95 0.01 220);
+  --secondary: oklch(0.95 0.01 220);
   --secondary-foreground: oklch(0.22 0.05 250);
 
   /* Muted */
-  --muted:                oklch(0.95 0.01 220);
-  --muted-foreground:     oklch(0.50 0.02 240);
+  --muted: oklch(0.95 0.01 220);
+  --muted-foreground: oklch(0.5 0.02 240);
 
   /* Accent */
-  --accent:               oklch(0.93 0.02 200);
-  --accent-foreground:    oklch(0.22 0.05 250);
+  --accent: oklch(0.93 0.02 200);
+  --accent-foreground: oklch(0.22 0.05 250);
 
   /* Brand — Vibrant Fresh Cyan/Aquamarine (Clean, modern, eye-catching)
      L=60%, C=0.15, H=195° -> A brilliant, friendly turquoise that pops */
-  --brand:                oklch(0.60 0.15 195);
-  --brand-foreground:     oklch(0.10 0.02 195);
-  --brand-muted:          oklch(0.60 0.15 195 / 0.12);
+  --brand: oklch(0.6 0.15 195);
+  --brand-foreground: oklch(0.1 0.02 195);
+  --brand-muted: oklch(0.6 0.15 195 / 0.12);
 
   /* Borders & inputs */
-  --border:               oklch(0.88 0.01 240);
-  --input:                oklch(0.88 0.01 240);
-  --ring:                 oklch(0.60 0.15 195 / 0.50);
+  --border: oklch(0.88 0.01 240);
+  --input: oklch(0.88 0.01 240);
+  --ring: oklch(0.6 0.15 195 / 0.5);
 
   /* Destructive */
-  --destructive:          oklch(0.577 0.245 27.325);
+  --destructive: oklch(0.577 0.245 27.325);
 
-  --radius:               0.625rem; /* Slightly softer, modern rounding */
+  --radius: 0.625rem; /* Slightly softer, modern rounding */
 
   /* Charts */
-  --chart-1: oklch(0.60 0.15 195);
+  --chart-1: oklch(0.6 0.15 195);
   --chart-2: oklch(0.45 0.12 220);
-  --chart-3: oklch(0.30 0.08 250);
-  --chart-4: oklch(0.75 0.10 180);
+  --chart-3: oklch(0.3 0.08 250);
+  --chart-4: oklch(0.75 0.1 180);
   --chart-5: oklch(0.85 0.05 160);
 
   /* Sidebar */
-  --sidebar:                    oklch(0.97 0.005 240);
-  --sidebar-foreground:         oklch(0.145 0.01 240);
-  --sidebar-primary:            oklch(0.22 0.05 250);
+  --sidebar: oklch(0.97 0.005 240);
+  --sidebar-foreground: oklch(0.145 0.01 240);
+  --sidebar-primary: oklch(0.22 0.05 250);
   --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent:             oklch(0.93 0.02 200);
-  --sidebar-accent-foreground:  oklch(0.22 0.05 250);
-  --sidebar-border:             oklch(0.88 0.01 240);
-  --sidebar-ring:               oklch(0.60 0.15 195 / 0.50);
+  --sidebar-accent: oklch(0.93 0.02 200);
+  --sidebar-accent-foreground: oklch(0.22 0.05 250);
+  --sidebar-border: oklch(0.88 0.01 240);
+  --sidebar-ring: oklch(0.6 0.15 195 / 0.5);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Dark theme tokens — Crisp, deep space-navy and glowing cyan highlights
    ───────────────────────────────────────────────────────────────────────────── */
 .dark {
-  --background:           oklch(0.13 0.02 250);
-  --foreground:           oklch(0.95 0.005 240);
+  --background: oklch(0.13 0.02 250);
+  --foreground: oklch(0.95 0.005 240);
 
-  --card:                 oklch(0.17 0.02 250);
-  --card-foreground:      oklch(0.95 0.005 240);
+  --card: oklch(0.17 0.02 250);
+  --card-foreground: oklch(0.95 0.005 240);
 
-  --popover:              oklch(0.17 0.02 250);
-  --popover-foreground:   oklch(0.95 0.005 240);
+  --popover: oklch(0.17 0.02 250);
+  --popover-foreground: oklch(0.95 0.005 240);
 
-  --primary:              oklch(0.92 0.01 240);
-  --primary-foreground:   oklch(0.15 0.02 250);
+  --primary: oklch(0.92 0.01 240);
+  --primary-foreground: oklch(0.15 0.02 250);
 
-  --secondary:            oklch(0.22 0.03 250);
+  --secondary: oklch(0.22 0.03 250);
   --secondary-foreground: oklch(0.95 0.005 240);
 
-  --muted:                oklch(0.22 0.03 250);
-  --muted-foreground:     oklch(0.65 0.01 240);
+  --muted: oklch(0.22 0.03 250);
+  --muted-foreground: oklch(0.65 0.01 240);
 
-  --accent:               oklch(0.24 0.04 220);
-  --accent-foreground:    oklch(0.95 0.005 240);
+  --accent: oklch(0.24 0.04 220);
+  --accent-foreground: oklch(0.95 0.005 240);
 
   /* Brand Cyan — optimized for dark backgrounds to glow cleanly */
-  --brand:                oklch(0.70 0.16 195);
-  --brand-foreground:     oklch(0.10 0.02 195);
-  --brand-muted:          oklch(0.70 0.16 195 / 0.18);
+  --brand: oklch(0.7 0.16 195);
+  --brand-foreground: oklch(0.1 0.02 195);
+  --brand-muted: oklch(0.7 0.16 195 / 0.18);
 
-  --border:               oklch(1 0 0 / 0.10);
-  --input:                oklch(1 0 0 / 0.15);
-  --ring:                 oklch(0.70 0.16 195 / 0.50);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: oklch(0.7 0.16 195 / 0.5);
 
-  --destructive:          oklch(0.704 0.191 22.216);
+  --destructive: oklch(0.704 0.191 22.216);
 
-  --chart-1: oklch(0.70 0.16 195);
+  --chart-1: oklch(0.7 0.16 195);
   --chart-2: oklch(0.55 0.12 220);
-  --chart-3: oklch(0.40 0.08 250);
-  --chart-4: oklch(0.80 0.10 180);
-  --chart-5: oklch(0.90 0.05 160);
+  --chart-3: oklch(0.4 0.08 250);
+  --chart-4: oklch(0.8 0.1 180);
+  --chart-5: oklch(0.9 0.05 160);
 
-  --sidebar:                    oklch(0.15 0.02 250);
-  --sidebar-foreground:         oklch(0.95 0.005 240);
-  --sidebar-primary:            oklch(0.70 0.16 195);
-  --sidebar-primary-foreground: oklch(0.10 0.02 195);
-  --sidebar-accent:             oklch(0.22 0.03 250);
-  --sidebar-accent-foreground:  oklch(0.95 0.005 240);
-  --sidebar-border:             oklch(1 0 0 / 0.10);
-  --sidebar-ring:               oklch(0.70 0.16 195 / 0.50);
-  }
+  --sidebar: oklch(0.15 0.02 250);
+  --sidebar-foreground: oklch(0.95 0.005 240);
+  --sidebar-primary: oklch(0.7 0.16 195);
+  --sidebar-primary-foreground: oklch(0.1 0.02 195);
+  --sidebar-accent: oklch(0.22 0.03 250);
+  --sidebar-accent-foreground: oklch(0.95 0.005 240);
+  --sidebar-border: oklch(1 0 0 / 0.1);
+  --sidebar-ring: oklch(0.7 0.16 195 / 0.5);
+}
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Base layer
@@ -226,7 +226,12 @@
     line-height: 1.7;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     /* Display headings inherit font-display utility applied via className */
     line-height: 1.15;
     letter-spacing: -0.025em;

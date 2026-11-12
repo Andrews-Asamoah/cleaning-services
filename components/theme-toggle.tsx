@@ -13,7 +13,7 @@ export function ThemeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="rounded-full cursor-pointer"
+      className="cursor-pointer rounded-full"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       suppressHydrationWarning
     >

@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import { Fraunces, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: siteConfig.market.openGraphLocale,
     siteName: siteConfig.name,
     title: `${siteConfig.name} — Professional Cleaning & Staffing`,
     description: siteConfig.description,
@@ -57,36 +58,37 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang={siteConfig.market.locale}
       suppressHydrationWarning
       className={`${fraunces.variable} ${dmSans.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
-       <ThemeProvider
+        <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-            <a
-              href="#main-content"
-              className={[
-                "sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100",
-                "focus:rounded-md focus:bg-brand focus:px-4 focus:py-2",
-                "focus:text-brand-foreground focus:text-sm focus:font-medium",
-              ].join(" ")}
-            >
-              Skip to main content
-            </a>
+          <a
+            href="#main-content"
+            className={[
+              "sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100",
+              "focus:rounded-md focus:bg-brand focus:px-4 focus:py-2",
+              "focus:text-sm focus:font-medium focus:text-brand-foreground",
+            ].join(" ")}
+          >
+            Skip to main content
+          </a>
 
-            <Navbar />
+          <Navbar />
 
-            <main id="main-content" className="flex-1" tabIndex={-1}>
-              {children}
-            </main>
+          <main id="main-content" className="flex-1" tabIndex={-1}>
+            {children}
+          </main>
 
-            <Footer />
+          <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

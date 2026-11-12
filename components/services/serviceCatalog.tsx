@@ -3,36 +3,33 @@ import { ServiceCard } from "./serviceCard";
 import { Layers } from "lucide-react";
 
 interface ServiceCatalogProps {
-  onOpenQuickQuote: () => void;
+  onOpenQuickQuote?: () => void;
 }
 
 export function ServiceCatalog({ onOpenQuickQuote }: ServiceCatalogProps) {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+    <section className="mx-auto max-w-7xl space-y-10 px-4 py-12 sm:px-6 lg:px-8">
       {/* Section Header */}
-      <div className="text-left space-y-3 max-w-2xl">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-muted text-brand text-xs font-bold uppercase tracking-wider">
-          <Layers className="w-3.5 h-3.5" />
+      <div className="max-w-2xl space-y-3 text-left">
+        <div className="inline-flex items-center gap-2 rounded-full bg-brand-muted px-3 py-1 text-xs font-bold tracking-wider text-brand uppercase">
+          <Layers className="h-3.5 w-3.5" />
           <span>Comprehensive Offerings</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight font-display">
+        <h2 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Engineered Cleaning Capabilities
         </h2>
-        <p className="text-sm sm:text-base text-muted-foreground">
-          Explore our full suite of professional commercial janitorial programs and bespoke residential detailing services.
+        <p className="text-sm text-muted-foreground sm:text-base">
+          Explore our full suite of professional commercial janitorial programs and bespoke
+          residential detailing services.
         </p>
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {SERVICES_DATA.map((service) => (
-          <ServiceCard
-            key={service.id}
-            service={service}
-            onRequestProposal={onOpenQuickQuote}
-          />
+          <ServiceCard key={service.id} service={service} onRequestProposal={onOpenQuickQuote} />
         ))}
       </div>
     </section>
   );
-};
+}

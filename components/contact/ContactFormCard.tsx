@@ -26,11 +26,7 @@ export const ContactFormCard: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.message.trim()
-    ) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       toast.error("Please fill out your name, email, and message.");
       return;
     }
@@ -58,16 +54,16 @@ export const ContactFormCard: React.FC = () => {
   };
 
   return (
-    <Card className="border-border/80 bg-card/75 dark:bg-card/40 backdrop-blur-xl shadow-2xl overflow-hidden rounded-3xl">
-      <CardHeader className="space-y-3 pb-6 border-b border-border/60">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-muted text-brand border border-brand/30 text-xs font-bold uppercase tracking-wider self-start">
-          <MessageSquare className="w-3.5 h-3.5 text-brand" />
+    <Card className="overflow-hidden rounded-3xl border-border/80 bg-card/75 shadow-2xl backdrop-blur-xl dark:bg-card/40">
+      <CardHeader className="space-y-3 border-b border-border/60 pb-6">
+        <div className="inline-flex items-center gap-2 self-start rounded-full border border-brand/30 bg-brand-muted px-3.5 py-1.5 text-xs font-bold tracking-wider text-brand uppercase">
+          <MessageSquare className="h-3.5 w-3.5 text-brand" />
           <span>Send a Message</span>
         </div>
-        <CardTitle className="text-2xl sm:text-3xl font-extrabold text-foreground font-display tracking-tight">
+        <CardTitle className="font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
           General Inquiries & Feedback
         </CardTitle>
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+        <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
           Fill out the form below and our operations coordinator will respond promptly.
         </p>
       </CardHeader>
@@ -84,9 +80,12 @@ export const ContactFormCard: React.FC = () => {
               onSubmit={handleSubmit}
               className="space-y-4"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <Field className="space-y-1.5">
-                  <FieldLabel htmlFor="contact-name" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  <FieldLabel
+                    htmlFor="contact-name"
+                    className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                  >
                     Full Name *
                   </FieldLabel>
                   <Input
@@ -94,14 +93,15 @@ export const ContactFormCard: React.FC = () => {
                     required
                     placeholder="Your Name"
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="h-11 rounded-xl bg-secondary/50 border-border/80 focus-visible:border-brand focus-visible:ring-brand/20 text-foreground"
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="h-11 rounded-xl border-border/80 bg-secondary/50 text-foreground focus-visible:border-brand focus-visible:ring-brand/20"
                   />
                 </Field>
                 <Field className="space-y-1.5">
-                  <FieldLabel htmlFor="contact-email" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  <FieldLabel
+                    htmlFor="contact-email"
+                    className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                  >
                     Email Address *
                   </FieldLabel>
                   <Input
@@ -110,17 +110,18 @@ export const ContactFormCard: React.FC = () => {
                     type="email"
                     placeholder="you@company.com"
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="h-11 rounded-xl bg-secondary/50 border-border/80 focus-visible:border-brand focus-visible:ring-brand/20 text-foreground"
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="h-11 rounded-xl border-border/80 bg-secondary/50 text-foreground focus-visible:border-brand focus-visible:ring-brand/20"
                   />
                 </Field>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <Field className="space-y-1.5">
-                  <FieldLabel htmlFor="contact-phone" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  <FieldLabel
+                    htmlFor="contact-phone"
+                    className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                  >
                     Phone Number
                   </FieldLabel>
                   <Input
@@ -128,23 +129,22 @@ export const ContactFormCard: React.FC = () => {
                     type="tel"
                     placeholder="(555) 000-0000"
                     value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="h-11 rounded-xl bg-secondary/50 border-border/80 focus-visible:border-brand focus-visible:ring-brand/20 text-foreground"
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="h-11 rounded-xl border-border/80 bg-secondary/50 text-foreground focus-visible:border-brand focus-visible:ring-brand/20"
                   />
                 </Field>
                 <Field className="space-y-1.5">
-                  <FieldLabel htmlFor="contact-cat" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  <FieldLabel
+                    htmlFor="contact-cat"
+                    className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                  >
                     Topic / Category
                   </FieldLabel>
                   <select
                     id="contact-cat"
                     value={formData.category}
-                    onChange={(e) =>
-                      setFormData({ ...formData, category: e.target.value })
-                    }
-                    className="flex h-11 w-full rounded-xl border border-border/80 bg-secondary/50 px-3.5 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/20 focus-visible:border-brand transition-colors cursor-pointer"
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    className="flex h-11 w-full cursor-pointer rounded-xl border border-border/80 bg-secondary/50 px-3.5 py-2 text-sm text-foreground transition-colors focus-visible:border-brand focus-visible:ring-2 focus-visible:ring-brand/20 focus-visible:outline-none"
                   >
                     <option value="General Inquiry" className="bg-background text-foreground">
                       General Service Inquiry
@@ -155,7 +155,9 @@ export const ContactFormCard: React.FC = () => {
                     <option value="Billing & Accounting" className="bg-background text-foreground">
                       Billing & Accounting
                     </option>
-                    <option value="Recruitment & HR" className="bg-background text-foreground">Recruitment & HR</option>
+                    <option value="Recruitment & HR" className="bg-background text-foreground">
+                      Recruitment & HR
+                    </option>
                     <option value="Emergency Cleanup" className="bg-background text-foreground">
                       Emergency Cleanup Request
                     </option>
@@ -164,22 +166,26 @@ export const ContactFormCard: React.FC = () => {
               </div>
 
               <Field className="space-y-1.5">
-                <FieldLabel htmlFor="contact-subject" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <FieldLabel
+                  htmlFor="contact-subject"
+                  className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                >
                   Subject
                 </FieldLabel>
                 <Input
                   id="contact-subject"
                   placeholder="Brief summary of your inquiry..."
                   value={formData.subject}
-                  onChange={(e) =>
-                    setFormData({ ...formData, subject: e.target.value })
-                  }
-                  className="h-11 rounded-xl bg-secondary/50 border-border/80 focus-visible:border-brand focus-visible:ring-brand/20 text-foreground"
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  className="h-11 rounded-xl border-border/80 bg-secondary/50 text-foreground focus-visible:border-brand focus-visible:ring-brand/20"
                 />
               </Field>
 
               <Field className="space-y-1.5">
-                <FieldLabel htmlFor="contact-msg" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <FieldLabel
+                  htmlFor="contact-msg"
+                  className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                >
                   Message *
                 </FieldLabel>
                 <Textarea
@@ -188,24 +194,22 @@ export const ContactFormCard: React.FC = () => {
                   rows={4}
                   placeholder="How can our team assist you today?"
                   value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="rounded-2xl bg-secondary/50 border-border/80 focus-visible:border-brand focus-visible:ring-brand/20 text-foreground resize-none p-3.5"
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="resize-none rounded-2xl border-border/80 bg-secondary/50 p-3.5 text-foreground focus-visible:border-brand focus-visible:ring-brand/20"
                 />
               </Field>
 
-              <div className="pt-2 flex justify-end">
+              <div className="flex justify-end pt-2">
                 <Button
                   type="submit"
                   disabled={isSending}
-                  className="w-full sm:w-auto h-11 px-8 font-bold gap-2 rounded-xl bg-brand text-brand-foreground hover:bg-brand/90 shadow-md shadow-brand/20 cursor-pointer"
+                  className="h-11 w-full cursor-pointer gap-2 rounded-xl bg-brand px-8 font-bold text-brand-foreground shadow-md shadow-brand/20 hover:bg-brand/90 sm:w-auto"
                 >
                   {isSending ? (
                     <span>Sending Message...</span>
                   ) : (
                     <>
-                      <Send className="w-4 h-4" />
+                      <Send className="h-4 w-4" />
                       <span>Send Message</span>
                     </>
                   )}
@@ -219,7 +223,7 @@ export const ContactFormCard: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="py-10 text-center space-y-4"
+              className="space-y-4 py-10 text-center"
             >
               <motion.div
                 initial={{ scale: 0 }}
@@ -230,27 +234,26 @@ export const ContactFormCard: React.FC = () => {
                   damping: 15,
                   delay: 0.1,
                 }}
-                className="w-16 h-16 rounded-2xl bg-brand-muted text-brand border border-brand/30 mx-auto flex items-center justify-center shadow-md"
+                className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-brand/30 bg-brand-muted text-brand shadow-md"
               >
-                <CheckCircle2 className="w-8 h-8" />
+                <CheckCircle2 className="h-8 w-8" />
               </motion.div>
 
-              <h3 className="text-2xl font-extrabold font-display text-foreground tracking-tight">
+              <h3 className="font-display text-2xl font-extrabold tracking-tight text-foreground">
                 Message Dispatched!
               </h3>
 
-              <p className="text-xs sm:text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
-                Thank you,{" "}
-                <span className="font-semibold text-foreground">{formData.name}</span>. A
+              <p className="mx-auto max-w-sm text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                Thank you, <span className="font-semibold text-foreground">{formData.name}</span>. A
                 representative from our team will reply to{" "}
                 <span className="font-semibold text-foreground">{formData.email}</span> shortly.
               </p>
 
               <div className="pt-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={handleReset}
-                  className="rounded-xl border-border/80 bg-secondary/40 hover:bg-secondary text-foreground font-semibold px-6 h-11 cursor-pointer"
+                  className="h-11 cursor-pointer rounded-xl border-border/80 bg-secondary/40 px-6 font-semibold text-foreground hover:bg-secondary"
                 >
                   Send Another Query
                 </Button>

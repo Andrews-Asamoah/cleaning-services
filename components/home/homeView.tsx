@@ -14,7 +14,7 @@ import { ServiceDetailModal } from "./serviceDetailModal";
 
 export const HomeView: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
-  
+
   // If your Quick Quote trigger function comes from a provider or parent state:
   const handleOpenQuickQuote = () => {
     // Implement your quick quote modal open logic or dispatch here

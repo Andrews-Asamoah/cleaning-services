@@ -27,13 +27,7 @@ function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      {...props}
-    >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...props}>
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
@@ -59,20 +53,17 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      className="border-t border-border bg-background"
-      aria-label="Site footer"
-    >
+    <footer className="border-t border-border bg-background" aria-label="Site footer">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
           {/* ── Brand column ──────────────────────────────────────────────── */}
           <div className="lg:col-span-5">
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg"
+              className="group inline-flex w-fit items-center gap-2.5 rounded-lg focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
               aria-label={`${siteConfig.name} — home`}
             >
-              <span className="flex size-9 items-center justify-center rounded-xl bg-linear-to-tr from-teal-600 via-teal-500 to-cyan-400 text-white shadow-sm shrink-0 group-hover:scale-105 transition-transform">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-tr from-teal-600 via-teal-500 to-cyan-400 text-white shadow-sm transition-transform group-hover:scale-105">
                 <Sparkles className="size-4.5" aria-hidden="true" />
               </span>
               <span className="font-display text-xl font-semibold tracking-tight text-foreground">
@@ -85,23 +76,23 @@ export function Footer() {
             </p>
 
             {/* Contact details */}
-            <address className="mt-7 not-italic space-y-3 text-sm">
+            <address className="mt-7 space-y-3 text-sm not-italic">
               <a
                 href={siteConfig.phoneHref}
-                className="flex items-center gap-2.5 text-muted-foreground hover:text-brand transition-colors"
+                className="flex items-center gap-2.5 text-muted-foreground transition-colors hover:text-brand"
               >
                 <Phone className="size-4 shrink-0" aria-hidden="true" />
                 {siteConfig.phone}
               </a>
               <a
                 href={siteConfig.emailHref}
-                className="flex items-center gap-2.5 text-muted-foreground hover:text-brand transition-colors break-all"
+                className="flex items-center gap-2.5 break-all text-muted-foreground transition-colors hover:text-brand"
               >
                 <Mail className="size-4 shrink-0" aria-hidden="true" />
                 {siteConfig.email}
               </a>
               <p className="flex items-start gap-2.5 text-muted-foreground">
-                <MapPin className="size-4 shrink-0 mt-0.5" aria-hidden="true" />
+                <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 {siteConfig.address.full}
               </p>
             </address>
@@ -119,9 +110,7 @@ export function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${siteConfig.name} on ${label}`}
-                        className="flex size-9 items-center justify-center
-                      rounded-full border border-border text-muted-foreground
-                      hover:border-brand hover:text-brand transition-colors"
+                        className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-brand hover:text-brand"
                       >
                         <Icon className="size-4" aria-hidden="true" />
                       </a>
@@ -133,9 +122,9 @@ export function Footer() {
           </div>
 
           {/* ── Link columns ──────────────────────────────────────────────── */}
-          <div className="lg:col-span-7 grid grid-cols-2 gap-10 sm:grid-cols-3 lg:pl-8 lg:border-l lg:border-border">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7 lg:border-l lg:border-border lg:pl-8">
             <nav aria-label="Quick links">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
+              <h2 className="mb-4 text-sm font-semibold tracking-wider text-foreground uppercase">
                 Quick links
               </h2>
               <ul role="list" className="space-y-2.5">
@@ -143,7 +132,7 @@ export function Footer() {
                   <li key={href}>
                     <Link
                       href={href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {label}
                     </Link>
@@ -153,7 +142,7 @@ export function Footer() {
             </nav>
 
             <div>
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
+              <h2 className="mb-4 text-sm font-semibold tracking-wider text-foreground uppercase">
                 Service areas
               </h2>
               <ul role="list" className="space-y-2.5">
@@ -166,7 +155,7 @@ export function Footer() {
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
+              <h2 className="mb-4 text-sm font-semibold tracking-wider text-foreground uppercase">
                 Hours
               </h2>
               <ul role="list" className="space-y-2.5">
@@ -182,7 +171,7 @@ export function Footer() {
         </div>
 
         {/* ── Bottom bar ────────────────────────────────────────────────── */}
-        <div className="mt-14 border-t border-border pt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
             &copy; {year} {siteConfig.name}. All rights reserved.
           </p>
@@ -192,7 +181,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-xs text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {label}
                   </Link>

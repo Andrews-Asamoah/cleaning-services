@@ -20,7 +20,11 @@ export const SERVICE_HIGHLIGHTS: ServiceHighlight[] = [
     tagline: "Regular upkeep for homes and apartments of any size.",
     description:
       "Recurring visits tailored to your schedule, covering kitchens, bathrooms, living spaces, and bedrooms with eco-friendly products.",
-    features: ["Weekly or bi-weekly scheduling", "Eco-friendly products included", "Background-checked cleaners"],
+    features: [
+      "Weekly or bi-weekly scheduling",
+      "Eco-friendly products included",
+      "Background-checked cleaners",
+    ],
     pricingEstimate: siteConfig.pricingTiers[0].price,
     image: "/images/residential-cleaning.jpg", // PLACEHOLDER
     iconKey: "home",

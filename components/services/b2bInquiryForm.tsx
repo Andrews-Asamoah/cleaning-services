@@ -98,7 +98,7 @@ function ConfettiBurst() {
   const [pieces] = useState<ConfettiPiece[]>(() => generateConfettiPieces(28));
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden z-20">
+    <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
       {pieces.map((piece) => (
         <motion.span
           key={piece.id}
@@ -110,7 +110,7 @@ function ConfettiBurst() {
             rotate: piece.rotate,
           }}
           transition={{ duration: 1.1, delay: piece.delay, ease: "easeOut" }}
-          className="absolute left-1/2 top-0 rounded-[1px]"
+          className="absolute top-0 left-1/2 rounded-[1px]"
           style={{ width: piece.width, height: piece.height, backgroundColor: piece.color }}
         />
       ))}
@@ -152,7 +152,7 @@ export function B2BInquiryForm() {
 
       toast.success(
         `Corporate inquiry dispatched to management! Reference #${generatedRef}. Account Director assigned.`,
-        { duration: 5000 }
+        { duration: 5000 },
       );
 
       setTimeout(() => setShowConfetti(false), 1400);
@@ -166,31 +166,32 @@ export function B2BInquiryForm() {
   };
 
   return (
-    <section id="b2b-form-section" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Card className="bg-card/90 pt-0 dark:bg-card/40 backdrop-blur-2xl border border-border/80 shadow-2xl overflow-hidden rounded-3xl relative">
+    <section id="b2b-form-section" className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <Card className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/90 pt-0 shadow-2xl backdrop-blur-2xl dark:bg-card/40">
         {/* Ambient background glow */}
-        <div className="absolute right-0 top-0 w-96 h-96 bg-brand/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-brand/10 blur-3xl" />
 
         {/* Minimal Modern Header */}
-        <div className="p-6 sm:p-8 border-b border-border/70 relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-secondary/30">
+        <div className="relative z-10 flex flex-col justify-between gap-4 border-b border-border/70 bg-secondary/30 p-6 sm:flex-row sm:items-center sm:p-8">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-muted text-brand text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-muted px-3 py-1 text-xs font-bold tracking-wider text-brand uppercase">
+              <Sparkles className="h-3.5 w-3.5" />
               <span>Priority Enterprise Routing</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-foreground">
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
               Corporate & B2B Fast-Inquiry
             </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground max-w-lg">
-              Submit your corporate facility specifications below for expedited proposal generation by our Operations Director.
+            <p className="max-w-lg text-xs text-muted-foreground sm:text-sm">
+              Submit your corporate facility specifications below for expedited proposal generation
+              by our Operations Director.
             </p>
           </div>
-          <div className="w-12 h-12 rounded-2xl bg-brand/15 text-brand flex items-center justify-center shrink-0 border border-brand/20 shadow-sm">
-            <Building2 className="w-6 h-6" />
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-brand/20 bg-brand/15 text-brand shadow-sm">
+            <Building2 className="h-6 w-6" />
           </div>
         </div>
 
-        <CardContent className="relative p-6 sm:p-8 z-10">
+        <CardContent className="relative z-10 p-6 sm:p-8">
           {showConfetti && <ConfettiBurst />}
 
           <AnimatePresence mode="wait">
@@ -205,9 +206,12 @@ export function B2BInquiryForm() {
                 transition={{ duration: 0.2 }}
               >
                 <FieldGroup>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <Field>
-                      <FieldLabel htmlFor="b2b-company" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="b2b-company"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Company / Organization Name *
                       </FieldLabel>
                       <Input
@@ -216,12 +220,15 @@ export function B2BInquiryForm() {
                         placeholder="e.g. Apex Horizon Technologies Inc."
                         value={b2bData.companyName}
                         onChange={(e) => updateField("companyName", e.target.value)}
-                        className="rounded-xl bg-secondary/50 border-border/80 h-11 focus-visible:ring-brand"
+                        className="h-11 rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                       />
                     </Field>
 
                     <Field>
-                      <FieldLabel htmlFor="b2b-contact" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="b2b-contact"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Contact Name & Title *
                       </FieldLabel>
                       <Input
@@ -230,14 +237,17 @@ export function B2BInquiryForm() {
                         placeholder="e.g. Marcus Chen, Facilities Manager"
                         value={b2bData.contactName}
                         onChange={(e) => updateField("contactName", e.target.value)}
-                        className="rounded-xl bg-secondary/50 border-border/80 h-11 focus-visible:ring-brand"
+                        className="h-11 rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                       />
                     </Field>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <Field>
-                      <FieldLabel htmlFor="b2b-email" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="b2b-email"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Corporate Work Email *
                       </FieldLabel>
                       <Input
@@ -247,12 +257,15 @@ export function B2BInquiryForm() {
                         placeholder="facilities@company.com"
                         value={b2bData.workEmail}
                         onChange={(e) => updateField("workEmail", e.target.value)}
-                        className="rounded-xl bg-secondary/50 border-border/80 h-11 focus-visible:ring-brand"
+                        className="h-11 rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                       />
                     </Field>
 
                     <Field>
-                      <FieldLabel htmlFor="b2b-phone" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="b2b-phone"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Direct Phone / Mobile *
                       </FieldLabel>
                       <Input
@@ -262,21 +275,27 @@ export function B2BInquiryForm() {
                         placeholder="(555) 234-5678"
                         value={b2bData.phone}
                         onChange={(e) => updateField("phone", e.target.value)}
-                        className="rounded-xl bg-secondary/50 border-border/80 h-11 focus-visible:ring-brand"
+                        className="h-11 rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                       />
                     </Field>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
                     <Field>
-                      <FieldLabel htmlFor="b2b-sqft" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="b2b-sqft"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Approx. Square Footage *
                       </FieldLabel>
                       <Select
                         value={b2bData.squareFootage}
                         onValueChange={(value) => updateField("squareFootage", value ?? "")}
                       >
-                        <SelectTrigger id="b2b-sqft" className="w-full rounded-xl bg-secondary/50 border-border/80 h-11">
+                        <SelectTrigger
+                          id="b2b-sqft"
+                          className="h-11 w-full rounded-xl border-border/80 bg-secondary/50"
+                        >
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent className="rounded-xl">
@@ -290,14 +309,20 @@ export function B2BInquiryForm() {
                     </Field>
 
                     <Field>
-                      <FieldLabel htmlFor="b2b-freq" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="b2b-freq"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Cleaning Frequency *
                       </FieldLabel>
                       <Select
                         value={b2bData.cleaningFrequency}
                         onValueChange={(value) => updateField("cleaningFrequency", value ?? "")}
                       >
-                        <SelectTrigger id="b2b-freq" className="w-full rounded-xl bg-secondary/50 border-border/80 h-11">
+                        <SelectTrigger
+                          id="b2b-freq"
+                          className="h-11 w-full rounded-xl border-border/80 bg-secondary/50"
+                        >
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent className="rounded-xl">
@@ -311,14 +336,20 @@ export function B2BInquiryForm() {
                     </Field>
 
                     <Field>
-                      <FieldLabel htmlFor="b2b-type" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      <FieldLabel
+                        htmlFor="b2b-type"
+                        className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                      >
                         Facility Environment *
                       </FieldLabel>
                       <Select
                         value={b2bData.facilityType}
                         onValueChange={(value) => updateField("facilityType", value ?? "")}
                       >
-                        <SelectTrigger id="b2b-type" className="w-full rounded-xl bg-secondary/50 border-border/80 h-11">
+                        <SelectTrigger
+                          id="b2b-type"
+                          className="h-11 w-full rounded-xl border-border/80 bg-secondary/50"
+                        >
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent className="rounded-xl">
@@ -333,7 +364,10 @@ export function B2BInquiryForm() {
                   </div>
 
                   <Field>
-                    <FieldLabel htmlFor="b2b-notes" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    <FieldLabel
+                      htmlFor="b2b-notes"
+                      className="text-xs font-bold tracking-wider text-muted-foreground uppercase"
+                    >
                       Specific Requirements, Access Hours or Key Badging
                     </FieldLabel>
                     <Textarea
@@ -342,26 +376,26 @@ export function B2BInquiryForm() {
                       placeholder="E.g., After-hours access required after 7:00 PM; need touchpoint sanitization in cleanroom; requires recycling audit..."
                       value={b2bData.specialNotes}
                       onChange={(e) => updateField("specialNotes", e.target.value)}
-                      className="rounded-xl bg-secondary/50 border-border/80 focus-visible:ring-brand"
+                      className="rounded-xl border-border/80 bg-secondary/50 focus-visible:ring-brand"
                     />
                   </Field>
 
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-border/80">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground font-medium">
-                      <ShieldCheck className="w-4 h-4 text-brand shrink-0" />
+                  <div className="flex flex-col items-center justify-between gap-4 border-t border-border/80 pt-4 sm:flex-row">
+                    <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
+                      <ShieldCheck className="h-4 w-4 shrink-0 text-brand" />
                       <span>Direct submission to management inbox • No spam guarantee</span>
                     </div>
 
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full sm:w-auto h-12 px-8 gap-2 font-bold rounded-xl bg-brand text-brand-foreground hover:bg-brand/90 shadow-lg shadow-brand/20 cursor-pointer transition-all"
+                      className="h-12 w-full cursor-pointer gap-2 rounded-xl bg-brand px-8 font-bold text-brand-foreground shadow-lg shadow-brand/20 transition-all hover:bg-brand/90 sm:w-auto"
                     >
                       {isSubmitting ? (
                         <span>Dispatching to Management...</span>
                       ) : (
                         <>
-                          <Send className="w-4 h-4" />
+                          <Send className="h-4 w-4" />
                           <span>Send Corporate B2B Inquiry</span>
                         </>
                       )}
@@ -391,4 +425,4 @@ export function B2BInquiryForm() {
       </Card>
     </section>
   );
-};
+}

@@ -21,69 +21,72 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
   return (
     <Dialog open={!!selectedService} onOpenChange={(open) => !open && onClose()}>
       {/* w-full with max-w-[calc(100vw-2rem)] ensures proper mobile margins, while max-w-2xl gives a wider desktop layout. max-h-[85vh] adds scrolling if needed */}
-      <DialogContent className="w-full max-w-[calc(100vw-2rem)] sm:max-w-2xl mx-auto max-h-[85vh] overflow-y-auto p-5 sm:p-7 rounded-2xl border-border/80 bg-card shadow-2xl">
+      <DialogContent className="mx-auto max-h-[85vh] w-full max-w-[calc(100vw-2rem)] overflow-y-auto rounded-2xl border-border/80 bg-card p-5 shadow-2xl sm:max-w-2xl sm:p-7">
         <DialogHeader className="space-y-1.5 text-left">
           <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="w-fit bg-brand-muted text-brand border-0 font-semibold px-2.5 py-0.5 text-[10px] uppercase tracking-wider">
+            <Badge
+              variant="secondary"
+              className="w-fit border-0 bg-brand-muted px-2.5 py-0.5 text-[10px] font-semibold tracking-wider text-brand uppercase"
+            >
               {selectedService.category}
             </Badge>
           </div>
-          
+
           <div className="flex items-start gap-3">
-            <div className="p-2 rounded-xl bg-brand/10 text-brand shrink-0 mt-0.5">
-              <Sparkles className="w-4 h-4" />
+            <div className="mt-0.5 shrink-0 rounded-xl bg-brand/10 p-2 text-brand">
+              <Sparkles className="h-4 w-4" />
             </div>
             <div>
-              <DialogTitle className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight font-display">
+              <DialogTitle className="font-display text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
                 {selectedService.title}
               </DialogTitle>
-              <DialogDescription className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+              <DialogDescription className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
                 {selectedService.tagline}
               </DialogDescription>
             </div>
           </div>
         </DialogHeader>
 
-        <div className="space-y-4 my-3 text-sm text-foreground/80">
-          <p className="leading-relaxed text-xs sm:text-sm text-foreground/90 font-normal">
+        <div className="my-3 space-y-4 text-sm text-foreground/80">
+          <p className="text-xs leading-relaxed font-normal text-foreground/90 sm:text-sm">
             {selectedService.description}
           </p>
-          
+
           {/* Included Checkpoints Box - 2 columns on desktop to reduce length */}
-          <div className="bg-secondary/40 p-4 rounded-xl space-y-2.5 border border-border/60">
-            <h4 className="text-[11px] font-bold uppercase tracking-wider text-foreground">
+          <div className="space-y-2.5 rounded-xl border border-border/60 bg-secondary/40 p-4">
+            <h4 className="text-[11px] font-bold tracking-wider text-foreground uppercase">
               Included Protocol Checkpoints:
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+            <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-2 sm:text-sm">
               {selectedService.features.map((feat, i) => (
                 <div key={i} className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-brand mt-0.5 shrink-0" />
-                  <span className="text-foreground/90 font-medium">{feat}</span>
+                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand" />
+                  <span className="font-medium text-foreground/90">{feat}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Pricing Highlight Card */}
-          <div className="flex items-center justify-between p-3.5 rounded-xl bg-brand/5 border border-brand/20">
+          <div className="flex items-center justify-between rounded-xl border border-brand/20 bg-brand/5 p-3.5">
             <div className="space-y-0.5">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground block">
+              <span className="block text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
                 Estimated Investment
               </span>
               <span className="text-[11px] text-foreground/70">Customized to your space</span>
             </div>
-            <span className="font-extrabold text-brand text-sm sm:text-base">
+            <span className="text-sm font-extrabold text-brand sm:text-base">
               {selectedService.pricingEstimate}
             </span>
           </div>
         </div>
 
         {/* Action Footers */}
-        <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-border/60">
-          <Button 
-            variant="outline" 
-            onClick={onClose} 
-            className="cursor-pointer border-border hover:bg-secondary/80 text-foreground text-xs h-9 px-3"
+        <div className="flex items-center justify-end gap-2.5 border-t border-border/60 pt-3">
+          <Button
+            variant="outline"
+            onClick={onClose}
+            className="h-9 cursor-pointer border-border px-3 text-xs text-foreground hover:bg-secondary/80"
           >
             Close
           </Button>
@@ -93,10 +96,10 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
               onClose();
               onOpenQuickQuote();
             }}
-            className="cursor-pointer bg-brand text-brand-foreground hover:bg-brand/90 font-semibold group shadow-sm hover:shadow-md transition-all text-xs h-9 px-4"
+            className="group h-9 cursor-pointer bg-brand px-4 text-xs font-semibold text-brand-foreground shadow-sm transition-all hover:bg-brand/90 hover:shadow-md"
           >
             <span>Request Consultation</span>
-            <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </Button>
         </div>
       </DialogContent>

@@ -9,20 +9,14 @@ import { JobOpeningsAccordion } from "./jobOpenings";
 import { ApplicationForm } from "./applicationForm";
 
 export function CareersView() {
-  const [selectedPositionId, setSelectedPositionId] = useState<string>(
-    JOB_OPENINGS[0]?.id ?? ""
-  );
+  const [selectedPositionId, setSelectedPositionId] = useState<string>(JOB_OPENINGS[0]?.id ?? "");
 
   const handleApply = (jobId: string) => {
     setSelectedPositionId(jobId);
 
-    document
-      .getElementById("application-form-section")
-      ?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("application-form-section")?.scrollIntoView({ behavior: "smooth" });
 
-    toast.info(
-      `Position selected: ${JOB_OPENINGS.find((j) => j.id === jobId)?.title}`
-    );
+    toast.info(`Position selected: ${JOB_OPENINGS.find((j) => j.id === jobId)?.title}`);
   };
 
   return (
